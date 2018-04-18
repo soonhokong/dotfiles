@@ -1,0 +1,122 @@
+[user]
+        name = Soonho Kong
+        email = soonho.kong@tri.global
+
+[apply]
+  whitespace = nowarn
+
+[core]
+        excludesfile = /Users/soonhok/.gitignore_global
+        whitespace = trailing-space, space-before-tab
+        editor = "emacsclient -a 'vim'"
+        autocrlf = input
+	precomposeunicode = true
+	quotepath = false
+	pager = diff-so-fancy | less --tabs=4 -RFX
+
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[alias]
+  a = "add"
+  aa = "add --all"
+  ai = "add --interactive"
+  alias = "!git config -l | grep alias | cut -c 7-"
+  amend = "commit --amend -c HEAD"
+  amendc = "commit --amend -C HEAD"
+  ap = "add --patch"
+  assume = "update-index --assume-unchanged"
+  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+  au = "add --update"
+  b = "branch"
+  br = "branch"
+  commit = "commit -v"
+  ci = "commit -v"
+  cia = "commit -va"
+  co = "checkout"
+  conflicts = "!git ls-files -u | cut -f 2 | sort -u"
+  cp = "cherry-pick"
+  d = "diff"
+  dl = "diff HEAD^"
+  ds = "diff --staged"
+  du = "diff origin/master..master"
+  dump = "cat-file -p"
+  f = "ls-files"
+  fa = "fetch --all"
+  fap = "fetch --all --prune"
+  fd = "log --diff-filter=D --summary"
+  ff = "!git ls-files | grep -i"
+  fm = "log --diff-filter=M --summary"
+  gr = "grep -Ii"
+  grep = "grep -Ii"
+  log-pretty = "log --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar'"
+  log-stat = "log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --stat"
+  log-hist = "!git log-pretty --graph"
+  l = "!git log-hist"
+  la = "!git log-hist --all"
+  ll = "!git log-stat"
+  lp = "log --patch"
+  ls = "!git log-stat"
+  lt = "!git log-hist --simplify-by-decoration"
+  lu = "!git log-hist origin/master..master"
+  m = "merge --no-ff"
+  mf = "merge --ff-only"
+  pf = "pull --ff-only"
+  pr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^blessed || echo origin)} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+  pnp = "!git pull --rebase && git push"
+  r = "reset"
+  r1 = "reset HEAD^"
+  r2 = "reset HEAD^^"
+  rh = "reset --hard"
+  rh1 = "reset HEAD^ --hard"
+  rh2 = "reset HEAD^^ --hard"
+  s = "status -sb"
+  sa = "stash apply"
+  sha = "rev-list -n 1 HEAD --"
+  sl = "stash list"
+  sp = "stash pop"
+  ss = "stash save -u"
+  st = "status"
+  suba = "submodule add"
+  subr = "!git-submodule-rm"
+  subs = "submodule sync"
+  subu = "submodule foreach git pull origin master"
+  type = "cat-file -t"
+  unassume = "update-index --no-assume-unchanged"
+  unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+  untracked = "ls-files -o -X.gitignore --exclude=.*"
+
+[color]
+        branch = auto
+        diff = auto
+        interactive = auto
+        status = auto
+
+[push]
+        default = matching
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+
+[github]
+	user = soonho-tri
+[magit]
+	hideCampaign = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse

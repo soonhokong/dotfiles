@@ -1,0 +1,7 @@
+$pdflatex = 'xelatex -interaction=nonstopmode -8bit -etex -file-line-error -halt-on-error -synctex=1 %O %S';
+$pdf_previewer = "start evince %O %S";
+$pdf_update_method = 0;
+$sleep_time = 1;
+$clean_ext = "synctex.gz";
+@default_files = ('main.tex');
+
