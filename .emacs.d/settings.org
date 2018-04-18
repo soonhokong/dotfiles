@@ -1,0 +1,242 @@
+#+TITLE:       Emacs Settings
+#+EMAIL:       soonho.kong@gmail.com
+#+STARTUP:     odd fold
+#+LANGUAGE:    en
+#+OPTIONS:     skip:nil toc:nil
+#+HTML_HEAD:   <link rel="publisher" href="https://www.cs.cmu.edu/~soonhok" />
+
+* Personal Information
+#+BEGIN_SRC emacs-lisp
+  (setq user-full-name "Soonho Kong"
+        user-mail-address "soonho.kong@gmail.com")
+#+END_SRC
+
+* Basics
+** Full Screen
+#+BEGIN_SRC emacs-lisp
+  (if (eq system-type 'darwin)
+      (setq ns-use-native-fullscreen nil))
+  (if (eq system-type 'gnu/linux)
+      (progn
+        (defun toggle-fullscreen (&optional f)
+          (interactive)
+          (let ((current-value (frame-parameter nil 'fullscreen)))
+            (set-frame-parameter nil 'fullscreen
+                                 (if (equal 'fullboth current-value)
+                                     (if (boundp 'old-fullscreen) old-fullscreen nil)
+                                   (progn (setq old-fullscreen current-value)
+                                          'fullboth)))))
+        (global-set-key [(ctrl f2)] 'toggle-fullscreen)
+        (add-hook 'after-make-frame-functions 'toggle-fullscreen)))
+
+  (add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
+#+END_SRC
+** Use PATH
+#+BEGIN_SRC emacs-lisp
+  (use-package exec-path-from-shell
+    :init (exec-path-from-shell-initialize))
+#+END_SRC
+** Fonts
+#+BEGIN_SRC emacs-lisp
+  (set-face-attribute 'default nil
+                      :family "Monaco" :height 125 :weight 'normal)
+#+END_SRC
+** Unicode Font Setup
+#+BEGIN_SRC emacs-lisp
+  (use-package unicode-fonts
+    :config (unicode-fonts-setup))
+#+END_SRC
+** Map command key to meta
+#+BEGIN_SRC emacs-lisp
+  (setq mac-command-modifier 'meta)
+#+END_SRC
+** Backup Files
+#+BEGIN_SRC emacs-lisp
+  (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+  (setq delete-old-versions -1)
+  (setq version-control t)
+  (setq vc-make-backup-files t)
+  (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
+#+END_SRC
+** Turn off newbie stuff
+#+BEGIN_SRC emacs-lisp
+  (if (display-graphic-p)
+      (progn
+        (tool-bar-mode -1)
+        (scroll-bar-mode -1)))
+  (blink-cursor-mode -1)
+  (setq inhibit-startup-message t)
+  (setq initial-scratch-message nil)
+  (setq wdired-allow-to-change-permissions t)
+  (defalias 'yes-or-no-p 'y-or-n-p)
+  (setq dabbrev-case-distinction nil)
+  (setq dabbrev-case-fold-search nil)
+  (setq echo-keystrokes 0.1)
+  (setq delete-active-region nil)
+  (column-number-mode t)
+  (transient-mark-mode t)
+  (global-font-lock-mode t)
+  (show-paren-mode t)
+  (setq font-lock-maximum-decoration t)
+  (setq font-lock-maximum-size nil)
+  (setq display-time-24hr-format t)
+#+END_SRC
+** Color Theme
+#+BEGIN_SRC emacs-lisp
+  (use-package nord-theme)
+#+END_SRC
+
+** Ace window
+#+BEGIN_SRC emacs-lisp
+  (use-package ace-window
+    :bind ("M-p" . 'ace-window)
+    :config 
+      (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+      (setq aw-background t)
+  )
+#+END_SRC
+
+** Diminish
+#+BEGIN_SRC 
+(use-package diminish)
+#+END_SRC
+** Markdown
+#+BEGIN_SRC emacs-lisp
+(use-package markdown-mode)
+#+END_SRC
+* Useful emacs-lisp libraries
+
+#+BEGIN_SRC emacs-lisp
+  (use-package dash)
+  (use-package f)
+#+END_SRC
+
+* Helm settings
+#+BEGIN_SRC emacs-lisp
+  (use-package helm
+    :config
+      (setq helm-mode-fuzzy-match t)
+      (setq helm-completion-in-region-fuzzy-match t)
+      (helm-mode t)
+      (diminish 'helm-mode)
+      (global-set-key (kbd "M-x") 'helm-M-x)
+      (global-set-key (kbd "C-c f r") 'helm-recentf)
+      (global-set-key (kbd "C-x C-f") 'helm-find-files)
+      (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+      (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+      (define-key helm-map (kbd "C-z")  'helm-select-action))
+  (use-package helm-flx
+    :config
+      (helm-flx-mode t))
+#+END_SRC
+* Projectile
+#+BEGIN_SRC emacs-lisp
+  ;; Projectile - Project interaction library
+  (use-package projectile
+    :config
+      (setq projectile-indexing-method 'git)
+      (setq projectile-enable-caching t)
+      (setq projectile-keymap-prefix (kbd "C-c C-p"))
+      (setq projectile-switch-project-action 'projectile-dired)
+      (add-to-list 'projectile-other-file-alist '("cc" "h")) ;; switch from cc -> h
+      (add-to-list 'projectile-other-file-alist '("h" "cc"))
+    :bind ("M-o" . 'projectile-find-other-file)
+    :hook (after-init . projectile-mode)
+    :diminish projectile-mode)
+#+END_SRC
+* On-the-fly Syntax Check (Flycheck)
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :commands (flycheck-get-checker-for-buffer
+               flycheck-may-enable-mode)
+    :hook (c++-mode . flycheck-mode)
+    :init
+      (global-flycheck-mode)
+      (diminish 'flycheck-mode "fc"))
+#+END_SRC
+* Auto Completion (Company)
+#+BEGIN_SRC emacs-lisp
+  (use-package company
+    :defer t
+    :bind
+      (("M-/" . company-complete))
+    :init
+      (global-company-mode)
+    :config
+        (set-variable 'company-idle-delay 0.1)
+    :hook (c++-mode . company-mode)
+    :diminish company-mode)
+#+END_SRC
+* C++
+** Basics
+#+BEGIN_SRC emacs-lisp
+  (use-package modern-cpp-font-lock)
+#+END_SRC
+** ELDOC
+#+BEGIN_SRC emacs-lisp
+(use-package eldoc
+  :hook (c++-mode . eldoc-mode)
+  :diminish eldoc-mode)
+#+END_SRC
+** YCMD
+#+BEGIN_SRC emacs-lisp
+  (use-package ycmd
+    :bind (("C-c y g" . ycmd-goto))
+    :hook (c++-mode . ycmd-mode)
+    :config
+      (set-variable 'ycmd-server-command `("python2"
+					   ,(expand-file-name "~/work/ycmd/ycmd")))
+      (set-variable 'ycmd-parse-conditions '(save new-line buffer-focus))
+      (set-variable 'ycmd-idle-change-delay 0.1)
+      (set-variable 'url-show-status nil)
+      (set-variable 'ycmd-extra-conf-whitelist '("~/work/*"))
+      (set-variable 'ycmd-request-message-level -1))
+
+  (use-package company-ycmd
+    ;; We're trying out ycmd. No need for original clang support.
+    :init 
+      (setq company-backends (remove 'company-clang company-backends))
+    ;; :after company
+    :config 
+      (company-ycmd-setup))
+
+  (use-package flycheck-ycmd
+    ;; :after flycheck
+    :config 
+      (flycheck-ycmd-setup)
+      ;; Make sure the flycheck cache sees the parse results
+      (add-hook 'ycmd-file-parse-result-hook 'flycheck-ycmd--cache-parse-results)
+      ;; Add the ycmd checker to the list of available checkers
+      (add-to-list 'flycheck-checkers 'ycmd)
+      (when (not (display-graphic-p))
+	(setq flycheck-indication-mode nil)))
+  (require 'ycmd-eldoc)
+  (add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
+#+END_SRC
+* GIT (Magit)
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :config
+    (setq vc-display-status nil)
+    ;; full screen magit-status
+    (defadvice magit-status (around magit-fullscreen activate)
+      (window-configuration-to-register :magit-fullscreen)
+      ad-do-it
+      (delete-other-windows))
+    (defun magit-quit-session ()
+      "Restores the previous window configuration and kills the magit buffer"
+      (interactive)
+      (kill-buffer)
+      (jump-to-register :magit-fullscreen))
+    (setq magit-last-seen-setup-instructions "1.4.0")
+    (setq magit-refresh-status-buffer nil)
+    (setq auto-revert-buffer-list-filter
+          'magit-auto-revert-repository-buffers-p)
+    (setq magit-commit-show-diff nil
+          magit-revert-buffers 1)
+    :bind 
+    (("C-x g" . magit-status)
+     :map magit-status-mode-map
+     ("q" . magit-quit-session)))
+#+END_SRC
+
