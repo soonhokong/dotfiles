@@ -1,6 +1,11 @@
 dotfiles
 --------
 
+ - macOS
+   ```bash
+   brew install exa zsh zsh-syntax-highlighting
+   ```
+   
  - [zsh](http://www.zsh.org/)
     - https://github.com/sorin-ionescu/prezto
     ```bash
