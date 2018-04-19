@@ -53,3 +53,13 @@ cd ycmd
 git submodule update --init --recursive
 ./build.py --clang-completer
 ```
+
+emacs Setup
+-----------
+```bash
+mkdir -p ~/.emacs.d
+cd ~/.emacs.d
+ln -s ../dotfiles/.emacs.d/init.el
+ln -s ../dotfiles/.emacs.d/settings.org
+touch ~/.emacs.d/custom.el
+```
