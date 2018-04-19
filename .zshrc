@@ -1,11 +1,6 @@
 # If not running interactively, don't do anything
 [[ -o interactive ]] || return
 
-# Check if zsh is running under WSL
-if [[ -a /proc/version ]] && grep -q Microsoft /proc/version; then
-  unsetopt BG_NICE
-fi
-
 #
 # zplug
 #
@@ -17,16 +12,14 @@ if is-at-least 4.3.9 && [[ -f ~/.zplug/init.zsh ]]; then
   zplug "simnalamburt/zsh-expand-all"
   zplug "zsh-users/zsh-completions"
   zplug "zsh-users/zsh-autosuggestions"
-  zplug "zsh-users/zsh-syntax-highlighting"
+  zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
   zplug "g-plane/zsh-yarn-autocompletions", hook-build:"./zplug.zsh", defer:2
 
   if is-at-least 5.2.0; then
-    # Zsh 5.2+ 에선 pure 사용
     zplug "mafredri/zsh-async"
     zplug "sindresorhus/pure", use:pure.zsh, as:theme
   else
-    # 옛 버전에선 shellder 사용
     zplug "simnalamburt/shellder", as:theme
   fi
 
@@ -65,12 +58,6 @@ export LS_COLORS="di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=0;41:sg=3
 export TIME_STYLE="+%y%m%d"
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
-# Put one of the following two linew in '.zshrc.local'
-#
-# alias ls='ls --color=tty'
-# alias ls='ls -G'
-
-
 #
 # zsh-substring-completion
 #
@@ -102,11 +89,6 @@ fi
 if [[ -f ~/.fzf.zsh ]]; then source ~/.fzf.zsh; fi
 if [[ "$TMUX" = "" ]]; then export TERM="xterm-256color"; fi
 export DEFAULT_USER="$USER" # TODO: https://github.com/simnalamburt/shellder/issues/10
-
-# ~/.local/bin
-if [[ -d ~/.local/bin ]]; then
-  export PATH="$HOME/.local/bin:$PATH"
-fi
 
 # Aliases
 if (( $+commands[tmux] )); then alias irc='tmux attach -t irc'; fi
@@ -171,4 +153,5 @@ if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Platform-dependent stuff
+source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
