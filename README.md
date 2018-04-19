@@ -7,7 +7,7 @@ macOS
 
 Install packages via homebrew
 ```bash
-brew install exa npm zsh zsh-syntax-highlightin
+brew install exa npm zsh zsh-syntax-highlighting
 ```
 
 Install emacs26.1 from https://emacsformacosx.com/builds
