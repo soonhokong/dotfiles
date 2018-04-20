@@ -350,6 +350,10 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
   (require 'ycmd-eldoc)
   (add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
 #+END_SRC
+** Bazel
+#+BEGIN_SRC emacs-lisp
+(use-package bazel-mode)
+#+END_SRC
 ** SMT2
 #+BEGIN_SRC emacs-lisp
   (setq auto-mode-alist (cons '("\\.smt2$" . lisp-mode) auto-mode-alist))
