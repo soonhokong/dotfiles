@@ -270,7 +270,8 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :hook (c++-mode . company-mode)
     :diminish company-mode)
 #+END_SRC
-* GIT (Magit)
+* GIT
+** Magit
 #+BEGIN_SRC emacs-lisp
   (use-package magit
     :config
@@ -296,7 +297,16 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
      :map magit-status-mode-map
      ("q" . magit-quit-session)))
 #+END_SRC
-
+** Git Gutter
+#+BEGIN_SRC emacs-lisp
+(if (display-graphic-p)
+   (use-package git-gutter-fringe
+     :ensure t
+     :init (global-git-gutter-mode))
+ (use-package git-gutter
+  :ensure t
+  :init (global-git-gutter-mode)))
+#+END_SRC
 * Editor Config
 #+BEGIN_SRC emacs-lisp
   (use-package editorconfig
