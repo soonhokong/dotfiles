@@ -42,6 +42,11 @@
   (add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
 #+END_SRC
 * Basics
+** Server
+#+BEGIN_SRC emacs-lisp
+(load "server")
+(unless (server-running-p) (server-start))
+#+END_SRC
 ** Use PATH
 #+BEGIN_SRC emacs-lisp
   (use-package exec-path-from-shell
