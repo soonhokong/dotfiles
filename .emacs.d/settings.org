@@ -23,6 +23,11 @@
   (when (string= system-type "darwin")       
     (setq ns-use-native-fullscreen nil))
 #+END_SRC
+*** Bind M-` to other-frame
+#+BEGIN_SRC emacs-lisp
+  (when (string= system-type "darwin")       
+    (global-set-key (kbd "M-`") 'other-frame))
+#+END_SRC
 ** Linux
 *** Fullscreen
 #+BEGIN_SRC emacs-lisp
@@ -42,6 +47,28 @@
   (add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
 #+END_SRC
 * Basics
+** Display Time
+#+BEGIN_SRC emacs-lisp
+  (setq display-time-default-load-average nil)
+  (setq display-time-use-mail-icon t)
+  (setq display-time-24hr-format t)
+  (display-time-mode t)
+#+END_SRC
+** TeX Input Method
+#+BEGIN_SRC emacs-lisp
+(setq default-input-method 'TeX)
+#+END_SRC
+** Encoding
+#+BEGIN_SRC emacs-lisp
+(set-language-environment "UTF-8")
+(setq buffer-file-coding-system 'utf-8-unix)
+(setq default-file-name-coding-system 'utf-8-unix)
+(setq default-keyboard-coding-system 'utf-8-unix)
+(setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+(setq default-sendmail-coding-system 'utf-8-unix)
+(setq default-terminal-coding-system 'utf-8-unix)
+#+END_SRC
+
 ** Server
 #+BEGIN_SRC emacs-lisp
 (load "server")
@@ -92,10 +119,22 @@
   (column-number-mode t)
   (transient-mark-mode t)
   (global-font-lock-mode t)
-  (show-paren-mode t)
+
   (setq font-lock-maximum-decoration t)
   (setq font-lock-maximum-size nil)
   (setq display-time-24hr-format t)
+#+END_SRC
+** Matching Parens
+From https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parentheses.html
+#+BEGIN_SRC emacs-lisp
+  (show-paren-mode t)
+  (global-set-key "%" 'match-paren)
+  (defun match-paren (arg)
+    "Go to the matching paren if on a paren; otherwise insert %."
+    (interactive "p")
+    (cond ((looking-at "\\s(") (forward-list 1) (backward-char 1))
+	  ((looking-at "\\s)") (forward-char 1) (backward-list 1))
+	  (t (self-insert-command (or arg 1)))))
 #+END_SRC
 ** Color Theme
 #+BEGIN_SRC emacs-lisp
@@ -119,6 +158,16 @@
 ** Markdown
 #+BEGIN_SRC emacs-lisp
 (use-package markdown-mode)
+#+END_SRC
+** Whitespace Cleanup
+#+BEGIN_SRC emacs-lisp
+  (use-package ws-butler
+    :hook (prog-mode-hook . ws-butler-mode))
+#+END_SRC
+** Global unsets
+#+BEGIN_SRC emacs-lisp
+;; M-` invokes tmm-menubar; disable it.
+(global-unset-key "\M-`")
 #+END_SRC
 * Useful emacs-lisp libraries
 #+BEGIN_SRC emacs-lisp
@@ -364,6 +413,14 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
 	(setq flycheck-indication-mode nil)))
   (require 'ycmd-eldoc)
   (add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
+#+END_SRC
+*** Clang-format
+#+BEGIN_SRC emacs-lisp
+  (use-package clang-format
+    :init
+    (add-hook 'c-mode-common-hook
+	      (function (lambda () (local-set-key (kbd "TAB")
+						  'clang-format-region)))))
 #+END_SRC
 ** Bazel
 #+BEGIN_SRC emacs-lisp
