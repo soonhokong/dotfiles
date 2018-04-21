@@ -162,7 +162,8 @@ From https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parenthes
 ** Whitespace Cleanup
 #+BEGIN_SRC emacs-lisp
   (use-package ws-butler
-    :hook (prog-mode-hook . ws-butler-mode))
+    :init (ws-butler-global-mode)
+    :config (setq ws-butler-keep-whitespace-before-point nil))
 #+END_SRC
 ** Global unsets
 #+BEGIN_SRC emacs-lisp
