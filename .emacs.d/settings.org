@@ -13,20 +13,19 @@
 
 * Platform-dependent
 ** macOS
+** Map command key to meta
+#+BEGIN_SRC emacs-lisp
+  (setq mac-command-modifier 'meta)
+#+END_SRC
 *** "ls does not support --dired; see ‘dired-use-ls-dired’ for more details."
 #+BEGIN_SRC emacs-lisp
-  (when (string= system-type "darwin")       
+  (when (string= system-type "darwin")
     (setq dired-use-ls-dired nil))
 #+END_SRC
 *** Lion-style Fullscreen
 #+BEGIN_SRC emacs-lisp
-  (when (string= system-type "darwin")       
+  (when (string= system-type "darwin")
     (setq ns-use-native-fullscreen nil))
-#+END_SRC
-*** Bind M-` to other-frame
-#+BEGIN_SRC emacs-lisp
-  (when (string= system-type "darwin")       
-    (global-set-key (kbd "M-`") 'other-frame))
 #+END_SRC
 ** Linux
 *** Fullscreen
@@ -89,10 +88,6 @@
   (use-package unicode-fonts
     :config (unicode-fonts-setup))
 #+END_SRC
-** Map command key to meta
-#+BEGIN_SRC emacs-lisp
-  (setq mac-command-modifier 'meta)
-#+END_SRC
 ** Backup Files
 #+BEGIN_SRC emacs-lisp
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
@@ -145,14 +140,14 @@ From https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parenthes
 #+BEGIN_SRC emacs-lisp
   (use-package ace-window
     :bind ("M-p" . 'ace-window)
-    :config 
+    :config
       (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
       (setq aw-background t)
   )
 #+END_SRC
 
 ** Diminish
-#+BEGIN_SRC 
+#+BEGIN_SRC
 (use-package diminish)
 #+END_SRC
 ** Markdown
@@ -169,6 +164,11 @@ From https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parenthes
 #+BEGIN_SRC emacs-lisp
 ;; M-` invokes tmm-menubar; disable it.
 (global-unset-key "\M-`")
+#+END_SRC
+** Bind M-` to other-frame
+#+BEGIN_SRC emacs-lisp
+  (when (string= system-type "darwin")
+    (global-set-key (kbd "M-`") 'other-frame))
 #+END_SRC
 * Useful emacs-lisp libraries
 #+BEGIN_SRC emacs-lisp
@@ -347,7 +347,7 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
           'magit-auto-revert-repository-buffers-p)
     (setq magit-commit-show-diff nil
           magit-revert-buffers 1)
-    :bind 
+    :bind
     (("C-x g" . magit-status)
      :map magit-status-mode-map
      ("q" . magit-quit-session)))
@@ -396,15 +396,15 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
 
   (use-package company-ycmd
     ;; We're trying out ycmd. No need for original clang support.
-    :init 
+    :init
       (setq company-backends (remove 'company-clang company-backends))
     ;; :after company
-    :config 
+    :config
       (company-ycmd-setup))
 
   (use-package flycheck-ycmd
     ;; :after flycheck
-    :config 
+    :config
       (flycheck-ycmd-setup)
       ;; Make sure the flycheck cache sees the parse results
       (add-hook 'ycmd-file-parse-result-hook 'flycheck-ycmd--cache-parse-results)
