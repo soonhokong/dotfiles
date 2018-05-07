@@ -1,1 +1,2 @@
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export GUROBI_PATH=/opt/gurobi752/linux64

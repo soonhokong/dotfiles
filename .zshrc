@@ -15,3 +15,5 @@ source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
 # Gurobi/Mosek Licenses
 export GRB_LICENSE_FILE=$HOME/gurobi.lic
 export MOSEKLM_LICENSE_FILE=$HOME/mosek/mosek.lic
+
+export PATH=~/bin:$PATH
