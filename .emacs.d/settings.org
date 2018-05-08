@@ -301,6 +301,8 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :commands (flycheck-get-checker-for-buffer
                flycheck-may-enable-mode)
     :hook (c++-mode . flycheck-mode)
+    ;; Spell-check only the comment sections.
+    :hook (c++-mode . flyspell-prog-mode)
     :init
       (global-flycheck-mode)
       (diminish 'flycheck-mode "fc"))
