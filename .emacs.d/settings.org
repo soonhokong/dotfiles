@@ -61,10 +61,6 @@
 (setq default-sendmail-coding-system 'utf-8-unix)
 (setq default-terminal-coding-system 'utf-8-unix)
 #+END_SRC
-** TeX Input Method
-#+BEGIN_SRC emacs-lisp
-(setq default-input-method 'TeX)
-#+END_SRC
 ** Server
 #+BEGIN_SRC emacs-lisp
 (load "server")
