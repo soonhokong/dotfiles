@@ -433,6 +433,14 @@ Company math: https://github.com/vspinu/company-math
 #+BEGIN_SRC emacs-lisp
   (setq auto-mode-alist (cons '("\\.smt2$" . lisp-mode) auto-mode-alist))
 #+END_SRC
+** Python
+From https://realpython.com/emacs-the-best-python-editor/
+#+BEGIN_SRC emacs-lisp
+  (use-package elpy
+    :hook (elpy-mode . flycheck-mode)
+  )
+  (elpy-enable)
+#+END_SRC
 * Fin
 #+BEGIN_SRC emacs-lisp
   (add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
