@@ -125,8 +125,8 @@ From https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parenthes
     "Go to the matching paren if on a paren; otherwise insert %."
     (interactive "p")
     (cond ((looking-at "\\s(") (forward-list 1) (backward-char 1))
-	  ((looking-at "\\s)") (forward-char 1) (backward-list 1))
-	  (t (self-insert-command (or arg 1)))))
+          ((looking-at "\\s)") (forward-char 1) (backward-list 1))
+          (t (self-insert-command (or arg 1)))))
 #+END_SRC
 ** Color Theme
 #+BEGIN_SRC emacs-lisp
@@ -179,8 +179,8 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :config
       (setq multi-term-program "/bin/zsh"))
   (add-hook 'term-mode-hook
-	    (lambda ()
-	      (setq term-buffer-maximum-size 10000)))
+            (lambda ()
+              (setq term-buffer-maximum-size 10000)))
   (defcustom term-unbind-key-list
     '("C-z" "C-x" "C-c" "C-h" "C-y" "<ESC>")
     "The key list that will need to be unbind."
@@ -210,31 +210,31 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :type 'alist
     :group 'multi-term)
   (add-hook 'term-mode-hook
-	    (lambda ()
-	      (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
-	      (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
+            (lambda ()
+              (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
+              (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
   (add-hook 'term-mode-hook
-	    (lambda ()
-	      (define-key term-raw-map (kbd "C-y") 'term-paste)))
+            (lambda ()
+              (define-key term-raw-map (kbd "C-y") 'term-paste)))
   (defun buffer-exists (bufname) (not (eq nil (get-buffer bufname))))
 
   (defun soonho-visor-style-terminal ()
     (interactive)
     (let ((name_of_terminal_buffer "*terminal<1>*"))
       (if (buffer-exists name_of_terminal_buffer)
-	  ;; If the terminal buffer exists
-	  (if (string= (buffer-name) name_of_terminal_buffer)
-	      ;; and we are in the terminal buffer
-	      ;; then move to the previous buffer
-	      (previous-buffer)
-	    ;; otherwise, switch to terminal buffer (move to the other
-	    ;; frame in the buffer is there, instead of creating one in
-	    ;; the current frame!
-	    (switch-to-buffer name_of_terminal_buffer)
-	    )
-	;; If the terminal buffer doesn't exist, create one
-	(multi-term)
-	)))
+          ;; If the terminal buffer exists
+          (if (string= (buffer-name) name_of_terminal_buffer)
+              ;; and we are in the terminal buffer
+              ;; then move to the previous buffer
+              (previous-buffer)
+            ;; otherwise, switch to terminal buffer (move to the other
+            ;; frame in the buffer is there, instead of creating one in
+            ;; the current frame!
+            (switch-to-buffer name_of_terminal_buffer)
+            )
+        ;; If the terminal buffer doesn't exist, create one
+        (multi-term)
+        )))
   (global-set-key (kbd "C-`") 'soonho-visor-style-terminal)
 #+END_SRC
 * Helm settings
@@ -252,26 +252,26 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-z")  'helm-select-action)
     (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
-	  helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-	  helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-	  helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-	  helm-ff-file-name-history-use-recentf t))
+          helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+          helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+          helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+          helm-ff-file-name-history-use-recentf t))
   (use-package helm-flx
     :config
     (helm-flx-mode t)
     (setq helm-flx-for-helm-find-files t ;; t by default
-	  helm-flx-for-helm-locate t) ;; nil by default
+          helm-flx-for-helm-locate t) ;; nil by default
     (setq helm-M-x-fuzzy-match                  t
-	  helm-bookmark-show-location           t
-	  helm-buffers-fuzzy-matching           t
-	  helm-completion-in-region-fuzzy-match t
-	  helm-file-cache-fuzzy-match           t
-	  helm-imenu-fuzzy-match                t
-	  helm-mode-fuzzy-match                 t
-	  helm-locate-fuzzy-match               t
-	  helm-quick-update                     t
-	  helm-recentf-fuzzy-match              t
-	  helm-semantic-fuzzy-match             t))
+          helm-bookmark-show-location           t
+          helm-buffers-fuzzy-matching           t
+          helm-completion-in-region-fuzzy-match t
+          helm-file-cache-fuzzy-match           t
+          helm-imenu-fuzzy-match                t
+          helm-mode-fuzzy-match                 t
+          helm-locate-fuzzy-match               t
+          helm-quick-update                     t
+          helm-recentf-fuzzy-match              t
+          helm-semantic-fuzzy-match             t))
   (use-package helm-ag)
   (use-package helm-company)
   (use-package helm-projectile
@@ -384,7 +384,7 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :hook (c++-mode . ycmd-mode)
     :config
       (set-variable 'ycmd-server-command `("python2"
-					   ,(expand-file-name "~/work/ycmd/ycmd")))
+                                           ,(expand-file-name "~/work/ycmd/ycmd")))
       (set-variable 'ycmd-parse-conditions '(save new-line buffer-focus))
       (set-variable 'ycmd-idle-change-delay 0.1)
       (set-variable 'url-show-status nil)
@@ -408,7 +408,7 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
       ;; Add the ycmd checker to the list of available checkers
       (add-to-list 'flycheck-checkers 'ycmd)
       (when (not (display-graphic-p))
-	(setq flycheck-indication-mode nil)))
+        (setq flycheck-indication-mode nil)))
   (require 'ycmd-eldoc)
   (add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
 #+END_SRC
@@ -417,8 +417,8 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
   (use-package clang-format
     :init
     (add-hook 'c-mode-common-hook
-	      (function (lambda () (local-set-key (kbd "TAB")
-						  'clang-format-region)))))
+              (function (lambda () (local-set-key (kbd "TAB")
+                                                  'clang-format-region)))))
 #+END_SRC
 ** Bazel
 #+BEGIN_SRC emacs-lisp
