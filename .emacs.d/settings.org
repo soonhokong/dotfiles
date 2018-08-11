@@ -287,7 +287,7 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :config
       (setq projectile-indexing-method 'git)
       (setq projectile-enable-caching t)
-      (setq projectile-keymap-prefix (kbd "C-c C-p"))
+      (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
       (setq projectile-switch-project-action 'projectile-dired)
       (add-to-list 'projectile-other-file-alist '("cc" "h")) ;; switch from cc -> h
       (add-to-list 'projectile-other-file-alist '("h" "cc"))
