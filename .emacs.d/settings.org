@@ -424,6 +424,9 @@ https://github.com/ludwigpacifici/modern-cpp-font-lock
   (require 'ycmd-eldoc)
   (add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
 #+END_SRC
+*** company-c-headers
+(use-package company-c-headers
+  :ensure t)
 *** Clang-format
 #+BEGIN_SRC emacs-lisp
   (use-package clang-format
