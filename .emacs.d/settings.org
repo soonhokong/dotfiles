@@ -429,11 +429,40 @@ https://github.com/ludwigpacifici/modern-cpp-font-lock
   :ensure t)
 *** Clang-format
 #+BEGIN_SRC emacs-lisp
-  (use-package clang-format
-    :init
-    (add-hook 'c-mode-common-hook
-              (function (lambda () (local-set-key (kbd "TAB")
-                                                  'clang-format-region)))))
+  (use-package clang-format)
+
+  (use-package f)
+  (defun find-file-in-parents (filename &optional dir)
+    "Finds filename in parent directories and returns one if
+       exists. Otherwise returns nil."
+    (unless dir (setq dir (f-dirname (buffer-file-name))))
+    (let ((parent (f-parent dir)))
+      (unless (f-root? parent)
+	(if (f-exists? (f-expand filename dir))
+	    dir
+	  (find-file-in-parents filename parent)))))
+
+  (defcustom do-clang-format-buffer-on-save t
+    "Run clang-format-buffer on save if there is .clang-format file in the project.")
+
+  (defun toggle-use-clang-format()
+    (interactive)
+    (setq do-clang-format-buffer-on-save (not do-clang-format-buffer-on-save)))
+
+  (defun run-clang-format-if-c++-mode-before-save-hook()
+    "If the following conditions met, run git-clang-format.
+      - It's in c++-mode and
+      - .clang-format exists in parent directories and
+      - .no-clang-format does *not* exist in parent directories."
+    (when (and do-clang-format-buffer-on-save (eq major-mode 'c++-mode))
+      (let ((clang-format-root (find-file-in-parents ".clang-format"))
+	    (no-clang-format-root (find-file-in-parents ".no-clang-format")))
+	(cond (no-clang-format-root nil)
+	      (clang-format-root
+	       (clang-format-buffer))))))
+
+  (add-hook 'before-save-hook
+	    #'run-clang-format-if-c++-mode-before-save-hook)
 #+END_SRC
 ** Bazel
 #+BEGIN_SRC emacs-lisp
