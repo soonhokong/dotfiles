@@ -321,12 +321,6 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :diminish company-mode)
 
 #+END_SRC
-Company math: https://github.com/vspinu/company-math
-#+BEGIN_SRC emacs-lisp
-  (use-package company-math
-    :init
-      (add-to-list 'company-backends 'company-math-symbols-unicode))
-#+END_SRC
 * GIT
 ** Magit
 #+BEGIN_SRC emacs-lisp
