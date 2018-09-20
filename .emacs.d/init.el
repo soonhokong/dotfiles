@@ -4,7 +4,7 @@
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
+(unless package--initialized (package-initialize t))
 
 ;; Ignore "following symbolic link warning"
 (setq vc-handled-backends nil)
