@@ -4,7 +4,7 @@
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(unless package--initialized (package-initialize t))
+(when (version< emacs-version "27.0") (package-initialize))
 
 ;; Ignore "following symbolic link warning"
 (setq vc-handled-backends nil)
