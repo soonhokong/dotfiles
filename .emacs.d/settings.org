@@ -289,7 +289,7 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
   ;; Projectile - Project interaction library
   (use-package projectile
     :config
-      (setq projectile-indexing-method 'git)
+      (setq projectile-indexing-method 'turbo-alien)
       (setq projectile-enable-caching t)
       (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
       (setq projectile-switch-project-action 'projectile-dired)
