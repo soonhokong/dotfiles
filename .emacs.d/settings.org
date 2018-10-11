@@ -484,6 +484,50 @@ From https://realpython.com/emacs-the-best-python-editor/
   )
   (elpy-enable)
 #+END_SRC
+* LaTeX / AucTeX
+#+BEGIN_SRC emacs-lisp
+  (use-package latex
+    :ensure auctex
+    :mode ("\\.tex\\'" . latex-mode)
+    :config
+    (setq TeX-auto-save t)
+    (setq TeX-parse-self t)
+    ;;set up AUCTeX to deal with multiple file documents.
+    (setq-default TeX-master nil)
+    ;; (setq-default TeX-master nil)
+    (add-to-list 'TeX-command-list
+		 '("LaTeXMK"
+		   "latexmk -pvc -CF -bibtex -pdf %s"
+		   TeX-run-TeX nil t) t)
+    (add-hook 'LaTeX-mode-hook
+	      (lambda ()
+		(company-mode)
+		(turn-on-reftex)
+		(setq reftex-plug-into-AUCTeX t)
+		(reftex-isearch-minor-mode)
+		(setq TeX-PDF-mode t)
+		(setq TeX-source-correlate-method 'synctex)
+		(setq TeX-source-correlate-start-server t)
+		(setq TeX-command-default "LaTeXMK")
+		))
+
+    ;; Update PDF buffers after successful LaTeX runs
+    (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook
+	      #'TeX-revert-document-buffer)
+
+    ;; Setup skim for Mac.
+    (when (string= system-type "darwin")
+      (progn
+	;; Default Viewer = Skim
+	;; Note: In Skim > Preference > Sync : Choose Custom preset and set "/usr/local/bin/emacsclient" as command!
+	(setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
+	(setq TeX-view-program-list
+	      '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
+	)
+      )
+    )
+#+END_SRC
+
 * Fin
 #+BEGIN_SRC emacs-lisp
   (add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
