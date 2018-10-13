@@ -3,6 +3,7 @@ $pdflatex = 'pdflatex -interaction=nonstopmode -8bit -etex -file-line-error -hal
 $pdf_previewer = "open -a /Applications/Skim.app";
 $pdf_update_method = 0;
 $clean_ext = "synctex.gz";
+$out_dir = 'build';
 
 @default_files = ('main.tex');
 
