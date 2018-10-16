@@ -19,3 +19,6 @@ export MOSEKLM_LICENSE_FILE=$HOME/mosek/mosek.lic
 export PATH=~/bin:~/.local/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# opam configuration
+test -r ${HOME}/.opam/opam-init/init.zsh && . ${HOME}/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
