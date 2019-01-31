@@ -527,6 +527,15 @@ From https://realpython.com/emacs-the-best-python-editor/
     )
 #+END_SRC
 
+* rainbow-delimiters
+#+BEGIN_SRC emacs-lisp
+  ;; Projectile - Project interaction library
+  (use-package rainbow-delimiters
+    :ensure t
+    :init
+    (progn
+      (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)))
+#+END_SRC
 * Fin
 #+BEGIN_SRC emacs-lisp
   (add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
