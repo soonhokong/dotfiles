@@ -392,40 +392,74 @@ https://github.com/ludwigpacifici/modern-cpp-font-lock
   :hook (c++-mode . eldoc-mode)
   :diminish eldoc-mode)
 #+END_SRC
+*** LSP
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-mode
+    :diminish lsp-mode
+    :defines lsp-clients-go-language-server-flags
+    :hook (prog-mode . lsp)
+    :init
+    (setq lsp-auto-guess-root t)       ; Detect project root
+    (setq lsp-prefer-flymake nil)      ; Use lsp-ui and flycheck
+
+    ;; LSP clients
+    (setq lsp-clients-go-language-server-flags
+	  '("-gocodecompletion" "--format-style=\"goimports\"")))
+
+  ;; C/C++/Objective-C support
+  (use-package ccls
+    :defines projectile-project-root-files-top-down-recurring
+    :hook ((c-mode c++-mode objc-mode cuda-mode) . (lambda ()
+						     (require 'ccls)
+						     (lsp)))
+    :config
+    (with-eval-after-load 'projectile
+      (setq projectile-project-root-files-top-down-recurring
+	    (append '("compile_commands.json"
+		      ".ccls")
+		    projectile-project-root-files-top-down-recurring))))
+
+  (use-package lsp-ui
+    :bind (:map lsp-ui-mode-map
+		([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+		([remap xref-find-references] . lsp-ui-peek-find-references)
+		("C-c u" . lsp-ui-imenu)))
+  (use-package company-lsp)
+#+END_SRC
 *** YCMD
 #+BEGIN_SRC emacs-lisp
-  (use-package ycmd
-    :bind (("C-c y g" . ycmd-goto))
-    :hook (c++-mode . ycmd-mode)
-    :config
-      (set-variable 'ycmd-server-command `("python2"
-                                           ,(expand-file-name "~/work/ycmd/ycmd")))
-      (set-variable 'ycmd-parse-conditions '(save new-line buffer-focus))
-      (set-variable 'ycmd-idle-change-delay 0.1)
-      (set-variable 'url-show-status nil)
-      (set-variable 'ycmd-extra-conf-whitelist '("~/work/*"))
-      (set-variable 'ycmd-request-message-level -1))
+  ;; (use-package ycmd
+  ;;   :bind (("C-c y g" . ycmd-goto))
+  ;;   :hook (c++-mode . ycmd-mode)
+  ;;   :config
+  ;;     (set-variable 'ycmd-server-command `("python2"
+  ;;                                          ,(expand-file-name "~/work/ycmd/ycmd")))
+  ;;     (set-variable 'ycmd-parse-conditions '(save new-line buffer-focus))
+  ;;     (set-variable 'ycmd-idle-change-delay 0.1)
+  ;;     (set-variable 'url-show-status nil)
+  ;;     (set-variable 'ycmd-extra-conf-whitelist '("~/work/*"))
+  ;;     (set-variable 'ycmd-request-message-level -1))
 
-  (use-package company-ycmd
-    ;; We're trying out ycmd. No need for original clang support.
-    :init
-      (setq company-backends (remove 'company-clang company-backends))
-    ;; :after company
-    :config
-      (company-ycmd-setup))
+  ;; (use-package company-ycmd
+  ;;   ;; We're trying out ycmd. No need for original clang support.
+  ;;   :init
+  ;;     (setq company-backends (remove 'company-clang company-backends))
+  ;;   ;; :after company
+  ;;   :config
+  ;;     (company-ycmd-setup))
 
-  (use-package flycheck-ycmd
-    ;; :after flycheck
-    :config
-      (flycheck-ycmd-setup)
-      ;; Make sure the flycheck cache sees the parse results
-      (add-hook 'ycmd-file-parse-result-hook 'flycheck-ycmd--cache-parse-results)
-      ;; Add the ycmd checker to the list of available checkers
-      (add-to-list 'flycheck-checkers 'ycmd)
-      (when (not (display-graphic-p))
-        (setq flycheck-indication-mode nil)))
-  (require 'ycmd-eldoc)
-  (add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
+  ;; (use-package flycheck-ycmd
+  ;;   ;; :after flycheck
+  ;;   :config
+  ;;     (flycheck-ycmd-setup)
+  ;;     ;; Make sure the flycheck cache sees the parse results
+  ;;     (add-hook 'ycmd-file-parse-result-hook 'flycheck-ycmd--cache-parse-results)
+  ;;     ;; Add the ycmd checker to the list of available checkers
+  ;;     (add-to-list 'flycheck-checkers 'ycmd)
+  ;;     (when (not (display-graphic-p))
+  ;;       (setq flycheck-indication-mode nil)))
+  ;; (require 'ycmd-eldoc)
+  ;; (add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
 #+END_SRC
 *** company-c-headers
 (use-package company-c-headers
