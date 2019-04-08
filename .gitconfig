@@ -12,7 +12,6 @@
         autocrlf = input
 	precomposeunicode = true
 	quotepath = false
-	pager = diff-so-fancy | less --tabs=4 -RFX
 
 
 [difftool "sourcetree"]
