@@ -342,10 +342,6 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
       (jump-to-register :magit-fullscreen))
     (setq magit-last-seen-setup-instructions "1.4.0")
     (setq magit-refresh-status-buffer nil)
-    (setq auto-revert-buffer-list-filter
-          'magit-auto-revert-repository-buffers-p)
-    (setq magit-commit-show-diff nil
-          magit-revert-buffers 1)
     :bind
     (("C-x g" . magit-status)
      :map magit-status-mode-map
