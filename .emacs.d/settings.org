@@ -406,19 +406,6 @@ https://github.com/ludwigpacifici/modern-cpp-font-lock
     (setq lsp-clients-go-language-server-flags
 	  '("-gocodecompletion" "--format-style=\"goimports\"")))
 
-  ;; C/C++/Objective-C support
-  (use-package ccls
-    :defines projectile-project-root-files-top-down-recurring
-    :hook ((c-mode c++-mode objc-mode cuda-mode) . (lambda ()
-						     (require 'ccls)
-						     (lsp)))
-    :config
-    (with-eval-after-load 'projectile
-      (setq projectile-project-root-files-top-down-recurring
-	    (append '("compile_commands.json"
-		      ".ccls")
-		    projectile-project-root-files-top-down-recurring))))
-
   (use-package lsp-ui
     :bind (:map lsp-ui-mode-map
 		([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
