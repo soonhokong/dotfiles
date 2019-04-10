@@ -28,3 +28,8 @@ export LESS='-R'
 test -r ${HOME}/.opam/opam-init/init.zsh && . ${HOME}/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 export SNOPT_PATH=git
+
+alias btd='bazel test //...'
+alias bto='bazel test //...'
+alias bbd='bazel build //...'
+alias bbo='bazel build //...'
