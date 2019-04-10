@@ -43,17 +43,6 @@ curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/instal
 Common
 ======
 
-[ycmd](https://github.com/Valloric/ycmd)
------
-
-```bash
-mkdir -p ~/work/ && cd ~/work
-git clone https://github.com/Valloric/ycmd.git
-cd ycmd
-git submodule update --init --recursive
-./build.py --clang-completer
-```
-
 emacs Setup
 -----------
 ```bash
