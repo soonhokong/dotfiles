@@ -29,7 +29,7 @@ test -r ${HOME}/.opam/opam-init/init.zsh && . ${HOME}/.opam/opam-init/init.zsh >
 
 export SNOPT_PATH=git
 
-alias btd='bazel test'
-alias bto='bazel test'
-alias bbd='bazel build'
-alias bbo='bazel build'
+alias btd='bazel test --compilation_mode=dbg'
+alias bto='bazel test --compilation_mode=opt'
+alias bbd='bazel build --compilation_mode=dbg'
+alias bbo='bazel build --compilation_mode=opt'
