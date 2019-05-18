@@ -372,6 +372,10 @@ https://github.com/ludwigpacifici/modern-cpp-font-lock
     :hook (c++-mode . modern-c++-font-lock-mode))
 #+END_SRC
 
+Open .h files in c++-mode
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+#+END_SRC
 
 #+BEGIN_SRC emacs-lisp
   (defconst my-cc-style
