@@ -167,6 +167,11 @@ From https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parenthes
 #+BEGIN_SRC emacs-lisp
   (setq default-input-method 'TeX)
 #+END_SRC
+** Mouse
+#+BEGIN_SRC emacs-lisp
+  (xterm-mouse-mode t)
+#+END_SRC
+
 * Useful emacs-lisp libraries
 #+BEGIN_SRC emacs-lisp
   (use-package dash)
