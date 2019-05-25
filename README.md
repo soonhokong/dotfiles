@@ -23,12 +23,12 @@ curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/instal
 Ubuntu 16.04 (Xenial)
 =====================
 
-emacs25
+emacs26
 
 ```bash
-sudo add-apt-repository ppa:ubuntu-elisp/ppa -y
+sudo add-apt-repository ppa:kelleyk/emacs
 sudo apt-get update
-sudo update-alternatives --config emacs    # To make emacs25 default.
+sudo apt-get install emacs26
 ```
 
 zsh + [prezto](https://github.com/sorin-ionescu/prezto) + [pure theme](https://github.com/sindresorhus/pure) + [zplug](https://github.com/zplug/zplug)
