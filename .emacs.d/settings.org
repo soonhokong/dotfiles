@@ -440,7 +440,7 @@ Open .h files in c++-mode
   (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
   (use-package dap-mode)
 #+END_SRC
-*** COMMENT company-c-headers
+*** company-c-headers
 (use-package company-c-headers
   :ensure t)
 *** Clang-format
