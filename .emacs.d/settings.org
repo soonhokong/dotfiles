@@ -497,7 +497,9 @@ From https://realpython.com/emacs-the-best-python-editor/
   (elpy-enable)
   (setq elpy-rpc-python-command "python3")
   (setq python-shell-interpreter "python3")
-
+  (use-package py-yapf
+    :ensure t
+    :hook (python-mode . py-yapf-enable-on-save))
 #+END_SRC
 * LaTeX / AucTeX
 #+BEGIN_SRC emacs-lisp
