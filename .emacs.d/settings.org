@@ -400,7 +400,13 @@ Open .h files in c++-mode
 *** LSP
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-mode
-    :hook (prog-mode . lsp)
+    :config
+    (add-hook 'c++-mode-hook #'lsp)
+    (add-hook 'python-mode-hook #'lsp)
+
+    ;; `-background-index' requires clangd v8+!
+    (setq lsp-clients-clangd-args '("-j=4" "-background-index" "-log=error"))
+
     :init
     (setq lsp-auto-guess-root t)       ; Detect project root
     (setq lsp-prefer-flymake nil)      ; Use lsp-ui and flycheck
