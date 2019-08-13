@@ -8,7 +8,7 @@
 * Personal Information
 #+BEGIN_SRC emacs-lisp
   (setq user-full-name "Soonho Kong"
-        user-mail-address "soonho.kong@gmail.com")
+	user-mail-address "soonho.kong@gmail.com")
 #+END_SRC
 
 * Platform-dependent
@@ -32,16 +32,16 @@
 #+BEGIN_SRC emacs-lisp
   (if (eq system-type 'gnu/linux)
       (progn
-        (defun toggle-fullscreen (&optional f)
-          (interactive)
-          (let ((current-value (frame-parameter nil 'fullscreen)))
-            (set-frame-parameter nil 'fullscreen
-                                 (if (equal 'fullboth current-value)
-                                     (if (boundp 'old-fullscreen) old-fullscreen nil)
-                                   (progn (setq old-fullscreen current-value)
-                                          'fullboth)))))
-        (global-set-key [(ctrl f2)] 'toggle-fullscreen)
-        (add-hook 'after-make-frame-functions 'toggle-fullscreen)))
+	(defun toggle-fullscreen (&optional f)
+	  (interactive)
+	  (let ((current-value (frame-parameter nil 'fullscreen)))
+	    (set-frame-parameter nil 'fullscreen
+				 (if (equal 'fullboth current-value)
+				     (if (boundp 'old-fullscreen) old-fullscreen nil)
+				   (progn (setq old-fullscreen current-value)
+					  'fullboth)))))
+	(global-set-key [(ctrl f2)] 'toggle-fullscreen)
+	(add-hook 'after-make-frame-functions 'toggle-fullscreen)))
 #+END_SRC
 * Basics
 ** Display Time
@@ -74,7 +74,7 @@
 ** Fonts
 #+BEGIN_SRC emacs-lisp
   (set-face-attribute 'default nil
-                      :family "Monaco" :height 125 :weight 'normal)
+		      :family "Monaco" :height 125 :weight 'normal)
 #+END_SRC
 ** Unicode Font Setup
 #+BEGIN_SRC emacs-lisp
@@ -93,8 +93,8 @@
 #+BEGIN_SRC emacs-lisp
   (if (display-graphic-p)
       (progn
-        (tool-bar-mode -1)
-        (scroll-bar-mode -1)))
+	(tool-bar-mode -1)
+	(scroll-bar-mode -1)))
   (blink-cursor-mode -1)
   (setq inhibit-startup-message t)
   (setq initial-scratch-message nil)
@@ -121,8 +121,8 @@ From https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parenthes
     "Go to the matching paren if on a paren; otherwise insert %."
     (interactive "p")
     (cond ((looking-at "\\s(") (forward-list 1) (backward-char 1))
-          ((looking-at "\\s)") (forward-char 1) (backward-list 1))
-          (t (self-insert-command (or arg 1)))))
+	  ((looking-at "\\s)") (forward-char 1) (backward-list 1))
+	  (t (self-insert-command (or arg 1)))))
 #+END_SRC
 ** Color Theme
 #+BEGIN_SRC emacs-lisp
@@ -200,8 +200,8 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :config
       (setq multi-term-program "/bin/zsh"))
   (add-hook 'term-mode-hook
-            (lambda ()
-              (setq term-buffer-maximum-size 10000)))
+	    (lambda ()
+	      (setq term-buffer-maximum-size 10000)))
   (defcustom term-unbind-key-list
     '("C-z" "C-x" "C-c" "C-h" "C-y" "<ESC>")
     "The key list that will need to be unbind."
@@ -231,31 +231,31 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :type 'alist
     :group 'multi-term)
   (add-hook 'term-mode-hook
-            (lambda ()
-              (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
-              (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
+	    (lambda ()
+	      (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
+	      (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
   (add-hook 'term-mode-hook
-            (lambda ()
-              (define-key term-raw-map (kbd "C-y") 'term-paste)))
+	    (lambda ()
+	      (define-key term-raw-map (kbd "C-y") 'term-paste)))
   (defun buffer-exists (bufname) (not (eq nil (get-buffer bufname))))
 
   (defun soonho-visor-style-terminal ()
     (interactive)
     (let ((name_of_terminal_buffer "*terminal<1>*"))
       (if (buffer-exists name_of_terminal_buffer)
-          ;; If the terminal buffer exists
-          (if (string= (buffer-name) name_of_terminal_buffer)
-              ;; and we are in the terminal buffer
-              ;; then move to the previous buffer
-              (previous-buffer)
-            ;; otherwise, switch to terminal buffer (move to the other
-            ;; frame in the buffer is there, instead of creating one in
-            ;; the current frame!
-            (switch-to-buffer name_of_terminal_buffer)
-            )
-        ;; If the terminal buffer doesn't exist, create one
-        (multi-term)
-        )))
+	  ;; If the terminal buffer exists
+	  (if (string= (buffer-name) name_of_terminal_buffer)
+	      ;; and we are in the terminal buffer
+	      ;; then move to the previous buffer
+	      (previous-buffer)
+	    ;; otherwise, switch to terminal buffer (move to the other
+	    ;; frame in the buffer is there, instead of creating one in
+	    ;; the current frame!
+	    (switch-to-buffer name_of_terminal_buffer)
+	    )
+	;; If the terminal buffer doesn't exist, create one
+	(multi-term)
+	)))
   (global-set-key (kbd "C-`") 'soonho-visor-style-terminal)
 #+END_SRC
 * Helm settings
@@ -273,26 +273,26 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-z")  'helm-select-action)
     (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
-          helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-          helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-          helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-          helm-ff-file-name-history-use-recentf t))
+	  helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+	  helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+	  helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+	  helm-ff-file-name-history-use-recentf t))
   (use-package helm-flx
     :config
     (helm-flx-mode t)
     (setq helm-flx-for-helm-find-files t ;; t by default
-          helm-flx-for-helm-locate t) ;; nil by default
+	  helm-flx-for-helm-locate t) ;; nil by default
     (setq helm-M-x-fuzzy-match                  t
-          helm-bookmark-show-location           t
-          helm-buffers-fuzzy-matching           t
-          helm-completion-in-region-fuzzy-match t
-          helm-file-cache-fuzzy-match           t
-          helm-imenu-fuzzy-match                t
-          helm-mode-fuzzy-match                 t
-          helm-locate-fuzzy-match               t
-          helm-quick-update                     t
-          helm-recentf-fuzzy-match              t
-          helm-semantic-fuzzy-match             t))
+	  helm-bookmark-show-location           t
+	  helm-buffers-fuzzy-matching           t
+	  helm-completion-in-region-fuzzy-match t
+	  helm-file-cache-fuzzy-match           t
+	  helm-imenu-fuzzy-match                t
+	  helm-mode-fuzzy-match                 t
+	  helm-locate-fuzzy-match               t
+	  helm-quick-update                     t
+	  helm-recentf-fuzzy-match              t
+	  helm-semantic-fuzzy-match             t))
   (use-package helm-ag)
   (use-package helm-company)
   (use-package helm-projectile
@@ -323,7 +323,7 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck
     :commands (flycheck-get-checker-for-buffer
-               flycheck-may-enable-mode)
+	       flycheck-may-enable-mode)
     :hook (c++-mode . flycheck-mode)
     ;; Spell-check only the comment sections.
     :hook (c++-mode . flyspell-prog-mode)
@@ -333,14 +333,19 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
 #+END_SRC
 * Auto Completion (Company)
 #+BEGIN_SRC emacs-lisp
+  (use-package company-flx
+    :requires company
+    :config
+    (company-flx-mode +1))
+
   (use-package company
     :defer t
     :bind
-      (("M-/" . company-complete))
+      (("C-<tab>" . company-complete))
     :init
       (global-company-mode)
     :config
-        (set-variable 'company-idle-delay 0.1)
+	(set-variable 'company-idle-delay 0.1)
     :hook (c++-mode . company-mode)
     :diminish company-mode)
 
@@ -426,16 +431,37 @@ Open .h files in c++-mode
     :init
     (setq lsp-auto-guess-root t)       ; Detect project root
     (setq lsp-prefer-flymake nil)      ; Use lsp-ui and flycheck
+    (setq lsp-enable-xref t)
 
     :commands lsp)
 
   (use-package lsp-ui
-    :bind (:map lsp-ui-mode-map
-		([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-		([remap xref-find-references] . lsp-ui-peek-find-references)
-		("C-c u" . lsp-ui-imenu))
-    :commands lsp-ui-mode)
-  (use-package company-lsp :commands company-lsp)
+    :requires lsp-mode flycheck
+    :config
+    (setq lsp-ui-doc-enable t
+	  lsp-ui-doc-use-childframe t
+	  lsp-ui-doc-position 'top
+	  lsp-ui-doc-include-signature t
+	  lsp-ui-sideline-enable nil
+	  lsp-ui-flycheck-enable t
+	  lsp-ui-flycheck-list-position 'right
+	  lsp-ui-flycheck-live-reporting t
+	  lsp-ui-peek-enable t
+	  lsp-ui-peek-list-width 60
+	  lsp-ui-peek-peek-height 25)
+
+    (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
+  (use-package company-lsp
+    :requires company
+    :config
+    (push 'company-lsp company-backends)
+
+    ;; Disable client-side cache because the LSP server does a better job.
+    (setq company-transformers nil
+	  company-lsp-async t
+	  company-lsp-cache-candidates nil))
+
   (use-package helm-lsp :commands helm-lsp-workspace-symbol)
   (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
   (use-package dap-mode)
