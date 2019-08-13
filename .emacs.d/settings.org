@@ -126,7 +126,23 @@ From https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parenthes
 #+END_SRC
 ** Color Theme
 #+BEGIN_SRC emacs-lisp
-  (use-package nord-theme)
+  (use-package doom-themes
+    :ensure
+    :config
+    (load-theme 'doom-one t)
+    (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
+    (set-face-attribute 'font-lock-preprocessor-face nil :slant 'italic)
+    (set-face-attribute 'font-lock-type-face nil :weight 'bold)
+    (set-face-attribute 'font-lock-function-name-face nil :weight 'bold)
+    (set-face-attribute 'font-lock-constant-face nil :weight 'bold)
+    (doom-themes-org-config))
+
+  (use-package doom-modeline
+    :ensure t
+    :hook (after-init . doom-modeline-mode)
+    :config
+    (setq doom-modeline-python-executable nil))
+
 #+END_SRC
 
 ** Ace window
