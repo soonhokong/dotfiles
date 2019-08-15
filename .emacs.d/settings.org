@@ -508,7 +508,8 @@ Open .h files in c++-mode
 #+END_SRC
 ** Bazel
 #+BEGIN_SRC emacs-lisp
-(use-package bazel-mode)
+(load "~/.emacs.d/bazel-mode.el")
+(setq bazel-mode-buildifier-before-save t)
 #+END_SRC
 ** SMT2
 #+BEGIN_SRC emacs-lisp
