@@ -1,22 +1,18 @@
 dotfiles
 --------
 
-
 macOS
 =====
 
 Install packages via homebrew
 ```bash
-brew install exa npm zsh zsh-syntax-highlighting
+brew bundle --file=~/dotfiles/homebrew/Brewfile
 ```
 
-Install emacs26.1 from https://emacsformacosx.com/builds
-
-zsh + [prezto](https://github.com/sorin-ionescu/prezto) + [pure theme](https://github.com/sindresorhus/pure) + [zplug](https://github.com/zplug/zplug)
+zsh + [prezto](https://github.com/sorin-ionescu/prezto) + [pure theme](https://github.com/sindresorhus/pure)
 ```bash
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 npm install --global pure-prompt
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 ```
 
    
