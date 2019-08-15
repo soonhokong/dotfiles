@@ -16,7 +16,7 @@ source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
 export GRB_LICENSE_FILE=$HOME/gurobi.lic
 export MOSEKLM_LICENSE_FILE=$HOME/mosek/mosek.lic
 
-export PATH=~/bin:~/.local/bin:$PATH
+export PATH=~/bin:~/.local/bin:$PATH:`python3 -m site --user-base`/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
