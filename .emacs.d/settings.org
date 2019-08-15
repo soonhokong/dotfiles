@@ -264,6 +264,7 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :config
     (setq helm-mode-fuzzy-match t)
     (setq helm-completion-in-region-fuzzy-match t)
+    (setq helm-ff-lynx-style-map t)
     (helm-mode t)
     (diminish 'helm-mode)
     (global-set-key (kbd "M-x") 'helm-M-x)
