@@ -18,6 +18,8 @@
 (setq use-package-always-ensure t)
 (setq use-package-verbose t)
 
+(add-to-list 'load-path "~/.emacs.d/local")
+
 (eval-when-compile
   (require 'use-package))
 (require 'diminish)                ;; if you use :diminish
