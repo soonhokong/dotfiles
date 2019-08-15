@@ -533,6 +533,8 @@ From https://realpython.com/emacs-the-best-python-editor/
   (use-package py-yapf
     :ensure t
     :hook (python-mode . py-yapf-enable-on-save))
+  (use-package py-isort
+    :hook (before-save . py-isort-before-save))
 #+END_SRC
 * LaTeX / AucTeX
 #+BEGIN_SRC emacs-lisp
