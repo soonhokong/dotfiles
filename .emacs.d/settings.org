@@ -587,6 +587,17 @@ From https://realpython.com/emacs-the-best-python-editor/
     (progn
       (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)))
 #+END_SRC
+* W3M
+#+BEGIN_SRC emacs-lisp
+  (use-package w3m
+    :commands (w3m-browse-url w3m-find-file)
+    :bind
+    (:map w3m-mode-map
+	  ("C-n"  . w3m-next-anchor)
+	  ("C-p"  . w3m-previous-anchor)
+	  ([up]   . previous-line)
+	  ([down] . next-line)))
+#+END_SRC
 * Fin
 #+BEGIN_SRC emacs-lisp
   (add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
