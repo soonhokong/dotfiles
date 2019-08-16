@@ -126,22 +126,32 @@ From https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parenthes
 #+END_SRC
 ** Color Theme
 #+BEGIN_SRC emacs-lisp
-  (use-package doom-themes
-    :ensure
-    :config
-    (load-theme 'doom-one t)
-    (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
-    (set-face-attribute 'font-lock-preprocessor-face nil :slant 'italic)
-    (set-face-attribute 'font-lock-type-face nil :weight 'bold)
-    (set-face-attribute 'font-lock-function-name-face nil :weight 'bold)
-    (set-face-attribute 'font-lock-constant-face nil :weight 'bold)
-    (doom-themes-org-config))
+   (use-package doom-themes
+     :init
+     (load-theme 'doom-one t)
+     :config
+     ;; Global settings (defaults)
+     (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+	   doom-themes-enable-italic t) ; if nil, italics is universally disabled
+     (setq doom-one-brighter-comments t)
 
-  (use-package doom-modeline
-    :ensure t
-    :hook (after-init . doom-modeline-mode)
-    :config
-    (setq doom-modeline-python-executable nil))
+     ;; Enable flashing mode-line on errors
+     (doom-themes-visual-bell-config)
+
+     ;; Enable custom neotree theme (all-the-icons must be installed!)
+     (doom-themes-neotree-config)
+     ;; or for treemacs users
+     (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+     (doom-themes-treemacs-config)
+
+     ;; Corrects (and improves) org-mode's native fontification.
+     (doom-themes-org-config))
+
+   (use-package doom-modeline
+     :ensure t
+     :hook (after-init . doom-modeline-mode)
+     :config
+     (setq doom-modeline-python-executable nil))
 
 #+END_SRC
 
