@@ -198,7 +198,7 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
 #+BEGIN_SRC emacs-lisp
   (use-package multi-term
     :config
-      (setq multi-term-program "/bin/zsh"))
+      (setq multi-term-program "zsh"))
   (add-hook 'term-mode-hook
 	    (lambda ()
 	      (setq term-buffer-maximum-size 10000)))
