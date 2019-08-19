@@ -304,17 +304,13 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
 	  helm-quick-update                     t
 	  helm-recentf-fuzzy-match              t
 	  helm-semantic-fuzzy-match             t))
-  (use-package helm-ag)
+  (use-package helm-rg)
   (use-package helm-company)
   (use-package helm-projectile
     :init
       (helm-projectile-on)
     :config
       (setq projectile-completion-system 'helm))
-#+END_SRC
-* Silver Searcher
-#+BEGIN_SRC emacs-lisp
-  (use-package ag)
 #+END_SRC
 * Projectile
 #+BEGIN_SRC emacs-lisp
@@ -329,6 +325,7 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :bind ("M-o" . 'projectile-find-other-file)
     :hook (after-init . projectile-mode)
     :diminish projectile-mode)
+  (use-package projectile-ripgrep)
 #+END_SRC
 * On-the-fly Syntax Check (Flycheck)
 #+BEGIN_SRC emacs-lisp
