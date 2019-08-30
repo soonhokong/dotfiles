@@ -195,7 +195,7 @@ From https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parenthes
 #+END_SRC
 ** Mouse
 #+BEGIN_SRC emacs-lisp
-  (xterm-mouse-mode t)
+  ;; (xterm-mouse-mode t)
 #+END_SRC
 
 * Useful emacs-lisp libraries
