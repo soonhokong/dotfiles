@@ -4,6 +4,7 @@ elpa/
 transient/
 var/
 .lsp-session-*
+.last-package-update-day
 custom.el
 projectile-bookmarks.eld
 projectile.cache
