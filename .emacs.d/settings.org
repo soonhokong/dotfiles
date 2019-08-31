@@ -72,9 +72,14 @@
     :init (exec-path-from-shell-initialize))
 #+END_SRC
 ** Fonts
+  Use [[https://github.com/nathco/Office-Code-Pro][Office Code Pro]].
 #+BEGIN_SRC emacs-lisp
   (set-face-attribute 'default nil
-		      :family "Monaco" :height 125 :weight 'normal)
+		      :family "Office Code Pro"
+		      :height 140
+		      :weight 'normal
+		      :width 'normal)
+
 #+END_SRC
 ** Unicode Font Setup
 #+BEGIN_SRC emacs-lisp
