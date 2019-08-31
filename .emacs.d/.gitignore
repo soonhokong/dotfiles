@@ -1,7 +1,10 @@
 auto-save-list/
 backups/
-custom.el
 elpa/
-projectile-bookmarks.eld
-settings.el
+transient/
 var/
+.lsp-session-*
+custom.el
+projectile-bookmarks.eld
+projectile.cache
+settings.el
