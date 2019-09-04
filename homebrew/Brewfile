@@ -1,6 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+brew 'aspell'
 brew 'bazel'
 brew 'buildifier'
 brew 'exa'
@@ -11,6 +12,7 @@ brew 'node'
 brew 'pwgen'
 brew 'python'
 brew 'python@2'
+brew 'rg'
 brew 'the_silver_searcher'
 brew 'w3m'
 brew 'wget'
