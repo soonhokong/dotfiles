@@ -76,7 +76,7 @@
 #+BEGIN_SRC emacs-lisp
   (set-face-attribute 'default nil
 		      :family "Office Code Pro"
-		      :height 140
+		      :height 150
 		      :weight 'normal
 		      :width 'normal)
 
