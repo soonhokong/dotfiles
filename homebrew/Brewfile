@@ -39,3 +39,6 @@ cask 'the-unarchiver'
 cask 'x2goclient'
 
 cask 'mactex'
+
+tap 'homebrew/cask-fonts'
+cask 'font-office-code-pro'
