@@ -6,7 +6,7 @@
   whitespace = nowarn
 
 [core]
-        excludesfile = /Users/soonhok/.gitignore_global
+        excludesfile = ~/.gitignore_global
         whitespace = trailing-space, space-before-tab
         editor = "emacsclient -a 'vim'"
         autocrlf = input
