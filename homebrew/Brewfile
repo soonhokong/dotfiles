@@ -18,7 +18,6 @@ brew 'w3m'
 brew 'wget'
 brew 'zplug'
 brew 'zsh'
-brew 'zsh-syntax-highlighting'
 
 cask 'xquartz'
 
