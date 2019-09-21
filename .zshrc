@@ -17,6 +17,7 @@ fi
 alias la='ls -lah $COLOR_OPTIONS'
 alias lh='ls -lh $COLOR_OPTIONS'
 alias ls='ls $COLOR_OPTIONS'
+alias ll='ls -l $COLOR_OPTIONS'
 alias l='ls $COLOR_OPTIONS'
 
 # Aliases for bazel
