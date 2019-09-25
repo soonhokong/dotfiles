@@ -443,7 +443,8 @@ Open .h files in c++-mode
     (add-hook 'python-mode-hook #'lsp)
 
     ;; `-background-index' requires clangd v8+!
-    (setq lsp-clients-clangd-args '("-j=4" "-background-index" "-log=error"))
+    (setq lsp-clients-clangd-args '("--header-insertion=iwyu"
+                                    "--clang-tidy"))
 
     :init
     (setq lsp-auto-guess-root t)       ; Detect project root
