@@ -4,7 +4,7 @@ dotfiles
 macOS
 =====
 
-Install packages via homebrew
+Install packages via [homebrew](https://brew.sh).
 ```bash
 brew bundle --file=~/dotfiles/homebrew/Brewfile
 ```
@@ -12,7 +12,7 @@ brew bundle --file=~/dotfiles/homebrew/Brewfile
 Ubuntu 18.04 (Bionic)
 =====================
 
-emacs26
+[emacs](https://www.gnu.org/software/emacs/) 26
 
 ```bash
 sudo add-apt-repository ppa:kelleyk/emacs
@@ -20,7 +20,7 @@ sudo apt-get update
 sudo apt-get install emacs26
 ```
 
-zsh + [zplug](https://github.com/zplug/zplug)
+[zsh](http://zsh.sourceforge.net) + [zplug](https://github.com/zplug/zplug)
 
 ```bash
 sudo apt install zsh gwak  # gwak is needed for zplug
