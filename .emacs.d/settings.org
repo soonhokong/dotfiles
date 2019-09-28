@@ -499,6 +499,9 @@ Show FIXME/TODO/BUG(...) in special face only in comments and strings
 #+BEGIN_SRC emacs-lisp
   (use-package clang-format)
 
+  ;; Indent C/C++ using clang-format
+  (fset 'c-indent-region 'clang-format-region)
+
   (use-package f)
   (defun find-file-in-parents (filename &optional dir)
     "Finds filename in parent directories and returns one if
