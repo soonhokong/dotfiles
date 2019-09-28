@@ -429,6 +429,13 @@ Open .h files in c++-mode
   (c-add-style "my-cc-mode" my-cc-style)
   (add-hook 'c++-mode-hook '(lambda () (c-set-style "my-cc-mode")))
 #+END_SRC
+
+*** fic-mode
+Show FIXME/TODO/BUG(...) in special face only in comments and strings
+#+BEGIN_SRC emacs-lisp
+  (use-package fic-mode
+    :hook (c++-mode . fic-mode))
+#+END_SRC
 *** ELDOC
 #+BEGIN_SRC emacs-lisp
 (use-package eldoc
