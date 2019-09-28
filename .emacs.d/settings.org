@@ -457,6 +457,7 @@ Show FIXME/TODO/BUG(...) in special face only in comments and strings
     (setq lsp-auto-guess-root t)       ; Detect project root
     (setq lsp-prefer-flymake nil)      ; Use lsp-ui and flycheck
     (setq lsp-enable-xref t)
+    (setq lsp-before-save-edits nil)
 
     :commands lsp)
 
