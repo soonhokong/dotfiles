@@ -75,6 +75,12 @@ setopt prompt_cr prompt_sp # don't clobber output without trailing newlines
 # Platform-dependent stuff
 source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
 
+# ---
+# fzf
+# ---
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+
 # -----
 # zplug
 # -----
