@@ -90,4 +90,8 @@ RPROMPT='%F{white}%*'  # Display time on the right
 zplug mafredri/zsh-async, from:github
 zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
+# fzf
+zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
+zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
+
 zplug load
