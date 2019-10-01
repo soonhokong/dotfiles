@@ -78,6 +78,8 @@ source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
 # -----
 # zplug
 # -----
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
 # (defer:2 means syntax-highlighting gets loaded after completions)
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2 # (like fish)
 # (defer:3 means history-substring search gets loaded after syntax-highlighting)
