@@ -99,4 +99,12 @@ zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
 # fd
 zplug 'sharkdp/fd', as:command, from:gh-r
 
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
 zplug load
