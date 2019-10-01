@@ -96,4 +96,7 @@ zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
 zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
 
+# fd
+zplug 'sharkdp/fd', as:command, from:gh-r
+
 zplug load
