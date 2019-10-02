@@ -10,9 +10,6 @@ brew update && brew upgrade && brew cask upgrade && brew cleanup -s
 # LaTeX packages
 tlmgr update --all
 
-# PIP packages
-pipupgrade -y --user
-
 # Upgrade packages installed via Mac App Store
 mas upgrade
 

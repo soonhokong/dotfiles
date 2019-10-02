@@ -5,10 +5,10 @@ set -euxo pipefail
 git -C ~/dotfiles pull
 
 # Update / upgrade packages installed via apt
-sudo apt-get update && sudo apt-get upgrade --yes & sudo apt-get autoremove && sudo apt-get autoclean
-
-# PIP packages
-pipupgrade -y --user
+sudo apt-get update
+sudo apt-get upgrade --yes
+sudo apt-get autoremove
+sudo apt-get autoclean
 
 # Update / upgrade emacs packages
 emacs --no-window-system --eval "(auto-package-update-now)" --kill
