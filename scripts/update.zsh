@@ -14,7 +14,7 @@ update() {
 	brew update && brew upgrade && brew cask upgrade && brew cleanup -s
 
 	# LaTeX packages
-	tlmgr update --all
+	tlmgr update --all --verify-repo=all
 
 	# Upgrade packages installed via Mac App Store
 	mas upgrade
