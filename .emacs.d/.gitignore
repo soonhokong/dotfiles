@@ -1,11 +1,12 @@
+.cache/
 auto-save-list/
 backups/
 elpa/
 elpy/
 transient/
 var/
-.lsp-session-*
 .last-package-update-day
+.lsp-session-*
 custom.el
 projectile-bookmarks.eld
 projectile.cache
