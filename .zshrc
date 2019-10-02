@@ -117,6 +117,7 @@ fi
 zplug load
 
 source ~/dotfiles/.fzf.zsh
+source ~/dotfiles/scripts/update.zsh
 
 # Setup fasd
 eval "$(fasd --init auto)"
