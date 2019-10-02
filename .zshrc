@@ -75,6 +75,9 @@ setopt no_rm_star_silent # confirm on `rm *` (default, but let's be safe)
 setopt prompt_cr prompt_sp # don't clobber output without trailing newlines
 # setopt rm_star_wait # wait after confirmation on `rm *` to allow ^C
 
+# Weather
+alias we="curl http://wttr.in/ | less"
+
 # Platform-dependent stuff
 source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
 
