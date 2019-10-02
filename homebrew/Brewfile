@@ -17,10 +17,13 @@ brew 'pwgen'
 brew 'python'
 brew 'python@2'
 brew 'rg'
+brew 'tree'
 brew 'w3m'
 brew 'wget'
 brew 'zplug'
 brew 'zsh'
+
+brew 'https://raw.githubusercontent.com/junegunn/blsd/master/blsd.rb', args: ["HEAD"]
 
 cask 'xquartz'
 
