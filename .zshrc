@@ -110,6 +110,8 @@ zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
 
 # fd
 zplug 'sharkdp/fd', as:command, from:gh-r
+zplug "clvv/fasd", as:command, use:fasd
+zplug "wookayin/fzf-fasd"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -120,3 +122,5 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+# Setup fasd
+eval "$(fasd --init auto)"
