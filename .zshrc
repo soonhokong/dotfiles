@@ -81,12 +81,6 @@ alias we="curl http://wttr.in/ | less"
 # Platform-dependent stuff
 source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
 
-# ---
-# fzf
-# ---
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
-
 # -----
 # zplug
 # -----
@@ -108,7 +102,6 @@ zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
 zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
 
-# fd
 zplug 'sharkdp/fd', as:command, from:gh-r
 zplug "clvv/fasd", as:command, use:fasd
 zplug "wookayin/fzf-fasd"
@@ -122,5 +115,8 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+
+source ~/dotfiles/.fzf.zsh
+
 # Setup fasd
 eval "$(fasd --init auto)"
