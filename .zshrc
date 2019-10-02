@@ -2,6 +2,9 @@ HISTSIZE=50000
 SAVEHIST=50000
 HISTFILE=~/.zsh_history
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # exa
 if (( $+commands[exa] )); then
   alias l='exa -alh --group-directories-first'
