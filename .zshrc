@@ -27,6 +27,7 @@ alias ls='ls $COLOR_OPTIONS'
 alias ll='ls -l $COLOR_OPTIONS'
 alias l='ls $COLOR_OPTIONS'
 alias e='emacsclient'
+alias et='emacsclient -t'
 
 # Aliases for bazel
 alias btd='bazel test --compilation_mode=dbg'
