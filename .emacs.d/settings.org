@@ -206,7 +206,16 @@ From https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parenthes
 #+BEGIN_SRC emacs-lisp
   ;; (xterm-mouse-mode t)
 #+END_SRC
-
+** Weather
+#+BEGIN_SRC emacs-lisp
+  (use-package wttrin
+    :config
+    (setq wttrin-default-cities
+	  '("Cambridge MA"
+	    "Arlington MA"
+	    "Los Altos CA"
+	    "Seoul Korea")))
+#+END_SRC
 * Useful emacs-lisp libraries
 #+BEGIN_SRC emacs-lisp
   (use-package dash)
