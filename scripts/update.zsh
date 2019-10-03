@@ -21,6 +21,9 @@ update() {
 
 	# MacOS Software Update
 	softwareupdate -i -a
+
+	# Restart emacs daemon
+	brew services restart emacs
     }
 
     update_ubuntu() {
