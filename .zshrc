@@ -41,6 +41,9 @@ bindkey -e
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+# Want case-insensitive matching only if there are no case-sensitive matches
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+
 # DRAKE: Gurobi/Mosek Licenses / SNOPT
 export GRB_LICENSE_FILE=$HOME/gurobi.lic
 export MOSEKLM_LICENSE_FILE=$HOME/mosek/mosek.lic
