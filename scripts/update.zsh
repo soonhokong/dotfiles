@@ -23,7 +23,7 @@ update() {
 	softwareupdate -i -a
 
 	# Restart emacs daemon
-	brew services restart emacs
+	brew services restart d12frosted/emacs-plus/emacs-plus
     }
 
     update_ubuntu() {
