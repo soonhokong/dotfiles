@@ -29,6 +29,9 @@ update() {
 	sudo apt-get upgrade --yes
 	sudo apt-get autoremove
 	sudo apt-get autoclean
+
+        # Restart emacs daemon
+        systemctl --user restart emacs.service
     }
 
     update_common
