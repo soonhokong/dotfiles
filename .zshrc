@@ -26,6 +26,7 @@ alias lh='ls -lh $COLOR_OPTIONS'
 alias ls='ls $COLOR_OPTIONS'
 alias ll='ls -l $COLOR_OPTIONS'
 alias l='ls $COLOR_OPTIONS'
+alias e='emacsclient'
 
 # Aliases for bazel
 alias btd='bazel test --compilation_mode=dbg'
@@ -116,6 +117,9 @@ fi
 
 zplug load
 
+if [ -f ~/.fzf.zsh ]; then
+    source ~/.fzf.zsh
+fi
 source ~/dotfiles/.fzf.zsh
 source ~/dotfiles/scripts/update.zsh
 
