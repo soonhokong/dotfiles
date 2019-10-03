@@ -124,7 +124,7 @@ zplug load
 if [ -f ~/.fzf.zsh ]; then
     source ~/.fzf.zsh
 fi
-source ~/dotfiles/.fzf.zsh
+source ~/dotfiles/scripts/fzf.zsh
 source ~/dotfiles/scripts/update.zsh
 
 # Setup fasd
