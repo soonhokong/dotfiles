@@ -363,6 +363,9 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
       (global-company-mode)
     :config
 	(set-variable 'company-idle-delay 0.1)
+        ; make company-dabbrev case-sensitive
+        (set-variable 'company-dabbrev-downcase nil)
+
     :hook (c++-mode . company-mode)
     :diminish company-mode)
 
