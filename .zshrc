@@ -2,30 +2,50 @@ HISTSIZE=50000
 SAVEHIST=50000
 HISTFILE=~/.zsh_history
 
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+# autoload
+autoload -Uz run-help
+autoload -Uz add-zsh-hook
+autoload -Uz colors && colors
+autoload -Uz compinit && compinit -u
+autoload -Uz is-at-least
 
-# exa
-if (( $+commands[exa] )); then
-  alias l='exa -alh --group-directories-first'
-  alias ll='exa -lh --group-directories-first'
-fi
+# LANGUAGE must be set by en_US
+export LANGUAGE="en_US.UTF-8"
+export LANG="${LANGUAGE}"
+export LC_ALL="${LANGUAGE}"
+export LC_CTYPE="${LANGUAGE}"
 
-# Directory coloring
-if [[ $OSTYPE = (darwin|freebsd)* ]]; then
-    export CLICOLOR=true
-    export LSCOLORS='exfxcxdxbxGxDxabagacad'
-fi
-if [[ $OSTYPE = (linux)* ]]; then
-    export COLOR_OPTIONS='--color=auto'
-fi
+# Pager
+export PAGER=less
+# Less status line
+export LESS='-R -f -X -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
+export LESSCHARSET='utf-8'
 
-# Aliases
-alias la='ls -lah $COLOR_OPTIONS'
-alias lh='ls -lh $COLOR_OPTIONS'
-alias ls='ls $COLOR_OPTIONS'
-alias ll='ls -l $COLOR_OPTIONS'
-alias l='ls $COLOR_OPTIONS'
+# LESS man page colors (makes Man pages more readable).
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[00;44;37m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+# ls command colors
+export LSCOLORS=exfxcxdxbxegedabagacad
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+
+# declare the environment variables
+export CORRECT_IGNORE='_*'
+export CORRECT_IGNORE_FILE='.*'
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+export WORDCHARS='*?.[]~&;!#$%^(){}<>'
+
+# ls => exa
+alias ls='exa'
+alias l='exa -alh --group-directories-first'
+alias ll='exa -lh --group-directories-first'
+
+# emacs
 alias e='emacsclient'
 alias et='emacsclient -t'
 
@@ -81,7 +101,12 @@ setopt prompt_cr prompt_sp # don't clobber output without trailing newlines
 # setopt rm_star_wait # wait after confirmation on `rm *` to allow ^C
 
 # Weather
-alias we="curl http://wttr.in/ | less"
+wttr()
+{
+    local request="wttr.in/${1-02476}?m"
+    [ "$(tput cols)" -lt 125 ] && request+='?n'
+    curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
+}
 
 # Platform-dependent stuff
 source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
@@ -110,7 +135,21 @@ zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
 zplug 'sharkdp/fd', as:command, from:gh-r
 zplug "clvv/fasd", as:command, use:fasd
 zplug "wookayin/fzf-fasd"
+zplug "BurntSushi/ripgrep", as:command, from:gh-r, rename-to:rg
+if [ "$(uname -s)" = 'Darwin' ]; then
+    ZPLUG_EXA_USE=macos-x86_64
+else
+    ZPLUG_EXA_USE=linux-x86_64
+fi
+zplug "ogham/exa", as:command, from:gh-r, use:"*${ZPLUG_EXA_USE}*", rename-to:exa
 
+# Install zplug/zplug first if needed.
+if ! zplug check --verbose zplug/zplug; then
+    printf "Install zplug/zplug? [y/N]: "
+    if read -q; then
+        echo; zplug install zplug/zplug
+    fi
+fi
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
