@@ -379,6 +379,14 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :diminish company-mode)
 
 #+END_SRC
+* which-key
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key
+    :ensure t
+    :config
+    (which-key-mode +1))
+#+END_SRC
+
 * GIT
 ** Magit
 #+BEGIN_SRC emacs-lisp
