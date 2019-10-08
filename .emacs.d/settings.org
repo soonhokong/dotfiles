@@ -65,11 +65,6 @@
   (set-terminal-coding-system 'utf-8)
   (setq coding-system-for-write 'utf-8)
 #+END_SRC
-** Server
-#+BEGIN_SRC emacs-lisp
-(load "server")
-(unless (server-running-p) (server-start))
-#+END_SRC
 ** Use PATH
 #+BEGIN_SRC emacs-lisp
   (use-package exec-path-from-shell
