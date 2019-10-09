@@ -136,6 +136,7 @@ zplug 'sharkdp/fd', as:command, from:gh-r
 zplug "clvv/fasd", as:command, use:fasd
 zplug "wookayin/fzf-fasd"
 zplug "BurntSushi/ripgrep", as:command, from:gh-r, rename-to:rg
+zplug "docker/cli", use:contrib/completion/zsh
 if [ "$(uname -s)" = 'Darwin' ]; then
     ZPLUG_EXA_USE=macos-x86_64
 else
