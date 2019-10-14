@@ -567,6 +567,7 @@ Show FIXME/TODO/BUG(...) in special face only in comments and strings
 ** SMT2
 #+BEGIN_SRC emacs-lisp
   (setq auto-mode-alist (cons '("\\.smt2$" . lisp-mode) auto-mode-alist))
+  (use-package lispy)
 #+END_SRC
 ** Python
 From https://realpython.com/emacs-the-best-python-editor/
