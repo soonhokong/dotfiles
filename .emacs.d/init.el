@@ -8,6 +8,10 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (when (version< emacs-version "27.0") (package-initialize))
 
+;; Add ~/.emacs.d/lisp in the load-path
+(push (expand-file-name "lisp" user-emacs-directory) load-path)
+(require 'init-const)
+
 ;; Ignore "following symbolic link warning"
 (setq vc-handled-backends nil)
 
@@ -18,8 +22,6 @@
   (package-install 'bind-key))
 (setq use-package-always-ensure t)
 (setq use-package-verbose t)
-
-(add-to-list 'load-path "~/.emacs.d/local")
 
 (eval-when-compile
   (require 'use-package))
