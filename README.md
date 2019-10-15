@@ -4,10 +4,8 @@ dotfiles
 macOS
 =====
 
-Install packages via [homebrew](https://brew.sh).
 ```bash
-brew bundle --file=~/dotfiles/homebrew/Brewfile
-brew services start d12frosted/emacs-plus/emacs-plus  # Start emacs daemon
+zsh ~/dotfiles/scripts/install_macos.sh
 ```
 
 Ubuntu 18.04 (Bionic)
