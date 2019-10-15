@@ -147,13 +147,6 @@ else
 fi
 zplug "ogham/exa", as:command, from:gh-r, use:"*${ZPLUG_EXA_USE}*", rename-to:exa
 
-# Install zplug/zplug first if needed.
-if ! zplug check --verbose zplug/zplug; then
-    printf "Install zplug/zplug? [y/N]: "
-    if read -q; then
-        echo; zplug install zplug/zplug
-    fi
-fi
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
