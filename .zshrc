@@ -114,6 +114,9 @@ source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
 # -----
 # zplug
 # -----
+export ZPLUG_HOME=${HOME}/.zplug
+source $ZPLUG_HOME/init.zsh
+
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 # (defer:2 means syntax-highlighting gets loaded after completions)

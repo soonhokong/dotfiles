@@ -1,7 +1,3 @@
-# zplug
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
-
 # Prevent the ._ problem as outlined
 export COPYFILE_DISABLE=true
 
