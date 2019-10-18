@@ -147,6 +147,18 @@ else
 fi
 zplug "ogham/exa", as:command, from:gh-r, use:"*${ZPLUG_EXA_USE}*", rename-to:exa
 
+if [ "$(uname -s)" = 'Linux' ]; then
+    # ----------------
+    # Bazel completion
+    # ----------------
+    zplug bazelbuild/bazel, use:scripts
+    fpath[1,0]=$ZPLUG_HOME/repos/bazelbuild/bazel/scripts/zsh_completion
+    # This way the completion script does not have to parse Bazel's options
+    # repeatedly.  The directory in cache-path must be created manually.
+    zstyle ':completion:*' use-cache on
+    zstyle ':completion:*' cache-path ~/.zsh/cache
+fi
+
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "

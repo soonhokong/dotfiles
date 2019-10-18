@@ -1,14 +1,2 @@
-# ----------------
-# Bazel completion
-# ----------------
-zplug bazelbuild/bazel, use:scripts
-fpath[1,0]=$ZPLUG_HOME/repos/bazelbuild/bazel/scripts/zsh_completion
-
-# This way the completion script does not have to parse Bazel's options
-# repeatedly.  The directory in cache-path must be created manually.
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-# ----------------
-
 export GUROBI_PATH=/opt/gurobi801/linux64
 export PATH=$PATH:/usr/local/go/bin
