@@ -115,7 +115,13 @@ source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
 # zplug
 # -----
 export ZPLUG_HOME=${HOME}/.zplug
-source $ZPLUG_HOME/init.zsh
+if [ ! -d "${ZPLUG_HOME}" ]; then
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+fi
+if [ ! -f "${ZPLUG_HOME}/init.zsh" ]; then
+    echo "zplug is not properly installed. Please check."
+fi
+source ${ZPLUG_HOME}/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
