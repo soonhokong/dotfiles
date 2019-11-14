@@ -42,7 +42,7 @@ touch ~/.emacs.d/custom.el
 emacs daemon for Ubuntu
 -----------------------
 
-Create `~/.config.systemd/user/emacs.service`.
+Create `~/.config/systemd/user/emacs.service`.
 ```
 ## If your Emacs is installed in a non-standard location, you may need
 ## to copy this file to a standard directory, eg ~/.config/systemd/user/ .
