@@ -116,9 +116,6 @@ source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
 # -----
 source "${HOME}/dotfiles/scripts/zplug.zsh"
 
-if [ -f ~/.fzf.zsh ]; then
-    source ~/.fzf.zsh
-fi
 source ~/dotfiles/scripts/fzf.zsh
 
 source ~/dotfiles/scripts/update.zsh
