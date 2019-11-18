@@ -114,32 +114,12 @@ source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
 # -------
 # zplugin
 # -------
-ZPLUGIN_HOME=$HOME/.zplugin
-if [ ! -d "${ZPLUGIN_HOME}" ]; then
-   mkdir ~/.zplugin
-   git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
+source "${HOME}/dotfiles/scripts/zplugin.zsh"
+
+# fzf
+if [ -f ~/.fzf.zsh ]; then
+    source ~/.fzf.zsh
 fi
-if [ ! -f "${ZPLUGIN_HOME}/bin/zplugin.zsh" ]; then
-    echo "zplugin is not properly installed. Please check."
-fi
-source "$HOME/.zplugin/bin/zplugin.zsh"
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+source ~/dotfiles/scripts/fzf.zsh
 
-
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light zdharma/fast-syntax-highlighting
-zplugin load zdharma/history-search-multi-word
-zplugin light zsh-users/zsh-history-substring-search
-zplugin light zsh-users/zsh-completions
-
-# Load the pure theme, with zsh-async library that's bundled with it.
-RPROMPT='%F{white}%*'  # Display time on the right
-zplugin ice pick"async.zsh" src"pure.zsh"
-zplugin light sindresorhus/pure
-
-# Binary release in archive, from GitHub-releases page.
-# After automatic unpacking it provides program "fzf".
-zplugin ice from"gh-r" as"command"
-zplugin load junegunn/fzf-bin
-
+source ~/dotfiles/scripts/update.zsh
