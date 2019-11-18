@@ -24,13 +24,13 @@ zplugin ice pick"async.zsh" src"pure.zsh"
 zplugin light sindresorhus/pure
 
 if [ "$(uname -s)" = 'Linux' ]; then
-    BPICK="(*darwin*)|(*macos*)"
+    BPICK="(*x86*linux*)|(*linux-x86*)|(*linux*amd*)"
 else
-    BPICK="*linux*"
+    BPICK="(*darwin*)|(*macos*)"
 fi
 
 # FZF
-zplugin ice from"gh-r" fbin"fzf"
+zplugin ice from"gh-r" fbin"fzf" bpick"${BPICK}"
 zplugin load junegunn/fzf-bin
 
 # FD
