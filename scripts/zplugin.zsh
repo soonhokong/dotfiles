@@ -54,3 +54,15 @@ zplugin light ogham/exa
 # RG
 zplugin ice from"gh-r" fbin"rg/rg" as"program" mv"ripgrep* -> rg" pick"rp/rg" bpick"${BPICK}"
 zplugin light BurntSushi/ripgrep
+
+# Bazel completion
+if [ "$(uname -s)" = 'Linux' ]; then
+    zplugin snippet https://raw.githubusercontent.com/bazelbuild/bazel/master/scripts/zsh_completion/_bazel
+    # This way the completion script does not have to parse Bazel's options
+    # repeatedly.  The directory in cache-path must be created manually.
+    zstyle ':completion:*' use-cache on
+    zstyle ':completion:*' cache-path ~/.zsh/cache
+    if [ ! -d ~/.zsh/cache ]; then
+	mkdir -p ~/.zsh/cache
+    fi
+fi
