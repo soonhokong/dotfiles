@@ -19,11 +19,10 @@ sudo apt-get update
 sudo apt-get install emacs26
 ```
 
-[zsh](http://zsh.sourceforge.net) + [zplug](https://github.com/zplug/zplug)
+[zsh](http://zsh.sourceforge.net)
 
 ```bash
-sudo apt install zsh curl gawk  # gawk is needed for zplug
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+sudo apt install zsh
 ```
 
 Common

@@ -14,8 +14,6 @@ zplugin light zplugin/z-a-bin-gem-node
 
 zplugin light zsh-users/zsh-autosuggestions
 zplugin light zdharma/fast-syntax-highlighting
-zplugin load  zdharma/history-search-multi-word
-zplugin light zsh-users/zsh-history-substring-search
 zplugin light zsh-users/zsh-completions
 
 # Load the pure theme, with zsh-async library that's bundled with it.
@@ -32,6 +30,18 @@ fi
 # FZF
 zplugin ice from"gh-r" fbin"fzf" bpick"${BPICK}"
 zplugin load junegunn/fzf-bin
+zplugin light junegunn/fzf
+
+# fzf: Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "${HOME}/.zplugin/plugins/junegunn---fzf/shell/completion.zsh" 2> /dev/null
+
+# fzf: Key bindings
+# ------------
+source "${HOME}/.zplugin/plugins/junegunn---fzf/shell/key-bindings.zsh"
+
+# HSMM
+zplugin load  zdharma/history-search-multi-word
 
 # FD
 zplugin ice from"gh-r" fbin"fd/fd" as"program" mv"fd* -> fd" pick"fd/fd" bpick"${BPICK}"
@@ -44,7 +54,3 @@ zplugin light ogham/exa
 # RG
 zplugin ice from"gh-r" fbin"rg/rg" as"program" mv"ripgrep* -> rg" pick"rp/rg" bpick"${BPICK}"
 zplugin light BurntSushi/ripgrep
-
-# # zplugin ice from"gh-r" as"command"
-# # zplugin light "clvv/fasd"
-# # zplug "wookayin/fzf-fasd"

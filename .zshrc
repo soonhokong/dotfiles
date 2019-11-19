@@ -58,10 +58,6 @@ alias bbo='bazel build --compilation_mode=opt'
 # Use the Emacs-like keybindings
 bindkey -e
 
-# Keybindings for substring search plugin. Maps up and down arrows.
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
 # Want case-insensitive matching only if there are no case-sensitive matches
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
@@ -111,10 +107,7 @@ wttr()
 # Platform-dependent stuff
 source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
 
-# -----
-# zplug
-# -----
-source "${HOME}/dotfiles/scripts/zplug.zsh"
+source "${HOME}/dotfiles/scripts/zplugin.zsh"
 
 source ~/dotfiles/scripts/fzf.zsh
 

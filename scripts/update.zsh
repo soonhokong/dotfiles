@@ -3,7 +3,7 @@ update() {
 	# Pull dotfiles
 	git -C ~/dotfiles pull
 
-	zplug update
+	zplugin update
 
 	# Update / upgrade emacs packages
 	emacs --no-window-system --eval "(auto-package-update-now)" --kill
