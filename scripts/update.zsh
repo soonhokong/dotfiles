@@ -3,6 +3,7 @@ update() {
 	# Pull dotfiles
 	git -C ~/dotfiles pull
 
+	zplugin self-update
 	zplugin update
 
 	# Update / upgrade emacs packages

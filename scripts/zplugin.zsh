@@ -24,7 +24,7 @@ zplugin light sindresorhus/pure
 if [ "$(uname -s)" = 'Linux' ]; then
     BPICK="(*x86*linux*)|(*linux-x86*)|(*linux*amd*)"
 else
-    BPICK="(*darwin*)|(*macos*)"
+    BPICK="(*darwin*amd*)|(*macos*)|(*apple*darwin*)"
 fi
 
 # FZF
