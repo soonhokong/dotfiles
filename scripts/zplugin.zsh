@@ -30,15 +30,16 @@ fi
 # FZF
 zplugin ice from"gh-r" fbin"fzf" bpick"${BPICK}"
 zplugin load junegunn/fzf-bin
-zplugin light junegunn/fzf
 
 # fzf: Auto-completion
-# ---------------
-[[ $- == *i* ]] && source "${HOME}/.zplugin/plugins/junegunn---fzf/shell/completion.zsh" 2> /dev/null
+zplugin snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
+ls "${HOME}/.zplugin/snippets/https--raw.githubusercontent.com--junegunn--fzf--master--shell/completion.zsh/completion.zsh"
+[[ $- == *i* ]] && source "${HOME}/.zplugin/snippets/https--raw.githubusercontent.com--junegunn--fzf--master--shell/completion.zsh/completion.zsh" 2> /dev/null
 
 # fzf: Key bindings
-# ------------
-source "${HOME}/.zplugin/plugins/junegunn---fzf/shell/key-bindings.zsh"
+zplugin snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
+ls ${HOME}/.zplugin/snippets/https--raw.githubusercontent.com--junegunn--fzf--master--shell/key-bindings.zsh/key-bindings.zsh
+source "${HOME}/.zplugin/snippets/https--raw.githubusercontent.com--junegunn--fzf--master--shell/key-bindings.zsh/key-bindings.zsh"
 
 # HSMM
 zplugin load  zdharma/history-search-multi-word
@@ -66,3 +67,10 @@ if [ "$(uname -s)" = 'Linux' ]; then
 	mkdir -p ~/.zsh/cache
     fi
 fi
+
+# fzf-fasd
+zplugin ice as"program" make
+zplugin light "clvv/fasd"
+# Setup fasd
+eval "$(fasd --init auto)"
+zplugin light "wookayin/fzf-fasd"
