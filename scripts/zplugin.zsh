@@ -32,14 +32,13 @@ zplugin ice from"gh-r" fbin"fzf" bpick"${BPICK}"
 zplugin load junegunn/fzf-bin
 
 # fzf: Auto-completion
+FZF_SNIPPET_DIR="${HOME}/.zplugin/snippets/https--raw.githubusercontent.com--junegunn--fzf--master--shell"
 zplugin snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
-ls "${HOME}/.zplugin/snippets/https--raw.githubusercontent.com--junegunn--fzf--master--shell/completion.zsh/completion.zsh"
-[[ $- == *i* ]] && source "${HOME}/.zplugin/snippets/https--raw.githubusercontent.com--junegunn--fzf--master--shell/completion.zsh/completion.zsh" 2> /dev/null
+[[ $- == *i* ]] && source "${FZF_SNIPPET_DIR}/completion.zsh/completion.zsh" 2> /dev/null
 
 # fzf: Key bindings
 zplugin snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
-ls ${HOME}/.zplugin/snippets/https--raw.githubusercontent.com--junegunn--fzf--master--shell/key-bindings.zsh/key-bindings.zsh
-source "${HOME}/.zplugin/snippets/https--raw.githubusercontent.com--junegunn--fzf--master--shell/key-bindings.zsh/key-bindings.zsh"
+source "${FZF_SNIPPET_DIR}/key-bindings.zsh/key-bindings.zsh"
 
 # HSMM
 zplugin load  zdharma/history-search-multi-word
