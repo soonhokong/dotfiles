@@ -335,6 +335,7 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
   (use-package projectile
     :config
       (setq projectile-enable-caching t)
+      (setq ffip-use-rust-fd t)
       (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
       (setq projectile-switch-project-action 'projectile-dired)
       (add-to-list 'projectile-other-file-alist '("cc" "h")) ;; switch from cc -> h
