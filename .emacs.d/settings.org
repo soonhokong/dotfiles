@@ -426,6 +426,16 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :init
       (editorconfig-mode))
 #+END_SRC
+* Dash
+#+BEGIN_SRC emacs-lisp
+  (when (string= system-type "darwin")
+    (use-package dash-at-point
+      :ensure t
+      :config
+      (add-to-list 'dash-at-point-mode-alist '(c++-mode . "cpp"))
+      (add-to-list 'dash-at-point-mode-alist '(python-mode . "python"))
+      :bind (("C-c d" . dash-at-point))))
+#+END_SRC
 * Language-Specific
 ** C++
 *** Basics
