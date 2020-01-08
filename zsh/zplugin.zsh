@@ -6,15 +6,14 @@ fi
 if [ ! -f "${ZPLUGIN_HOME}/bin/zplugin.zsh" ]; then
     echo "zplugin is not properly installed. Please check."
 fi
+
+# Load zplugin
 source "$HOME/.zplugin/bin/zplugin.zsh"
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 
-zplugin light zplugin/z-a-bin-gem-node
-
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light zdharma/fast-syntax-highlighting
-zplugin light zsh-users/zsh-completions
+# Install an extension for zplugin for managing "shims"
+zplugin load zplugin/z-a-bin-gem-node
 
 # Load the pure theme, with zsh-async library that's bundled with it.
 RPROMPT='%F{white}%*'  # Display time on the right
@@ -31,17 +30,12 @@ fi
 zplugin ice from"gh-r" fbin"fzf" bpick"${BPICK}"
 zplugin load junegunn/fzf-bin
 
-# fzf: Auto-completion
-FZF_SNIPPET_DIR="${HOME}/.zplugin/snippets/https--raw.githubusercontent.com--junegunn--fzf--master--shell"
-zplugin snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
-[[ $- == *i* ]] && source "${FZF_SNIPPET_DIR}/completion.zsh/completion.zsh" 2> /dev/null
-
-# fzf: Key bindings
-zplugin snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
-source "${FZF_SNIPPET_DIR}/key-bindings.zsh/key-bindings.zsh"
-
-# HSMM
-zplugin load  zdharma/history-search-multi-word
+# fzf-tmux script, completions for many programs (e.g. kill <TAB>)
+# and key bindings
+zplugin ice multisrc"shell/{completion,key-bindings}.zsh" \
+    id-as"junegunn/fzf_completions" pick"/dev/null" \
+    sbin"bin/fzf-tmux"
+zplugin load junegunn/fzf
 
 # FD
 zplugin ice from"gh-r" fbin"fd/fd" as"program" mv"fd* -> fd" pick"fd/fd" bpick"${BPICK}"
@@ -73,3 +67,22 @@ zplugin light "clvv/fasd"
 # Setup fasd
 eval "$(fasd --init auto)"
 zplugin light "wookayin/fzf-fasd"
+
+# Additional completion definitions
+zplugin ice blockf atclone'zplugin creinstall -q .' atpull'%atclone'
+zplugin load zsh-users/zsh-completions
+
+# History search by `Ctrl+R`
+zplugin ice compile'{hsmw-*,test/*}'
+zplugin load zdharma/history-search-multi-word
+
+# Autosuggestions
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+zplugin ice compile'{src/*.zsh,src/strategies/*}' atload'_zsh_autosuggest_start'
+zplugin load zsh-users/zsh-autosuggestions
+
+# Syntax highlighting
+# (compinit without `-i` spawns warning on `sudo -s`)
+zplugin ice wait'0' lucid atinit"ZPLGM[COMPINIT_OPTS]='-i' zpcompinit; zpcdreplay"
+zplugin load zdharma/fast-syntax-highlighting

@@ -1,6 +1,3 @@
-HISTSIZE=50000
-SAVEHIST=50000
-HISTFILE=~/.zsh_history
 
 # autoload
 autoload -Uz run-help
@@ -40,58 +37,29 @@ export CORRECT_IGNORE_FILE='.*'
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export WORDCHARS='*?.[]~&;!#$%^(){}<>'
 
-# ls => exa
-alias ls='exa'
-alias l='exa -alh --group-directories-first'
-alias ll='exa -lh --group-directories-first'
-
-# emacs
-alias e='emacsclient'
-alias et='emacsclient -t'
-
-# Aliases for bazel
-alias btd='bazel test --compilation_mode=dbg'
-alias bto='bazel test --compilation_mode=opt'
-alias bbd='bazel build --compilation_mode=dbg'
-alias bbo='bazel build --compilation_mode=opt'
-
 # Use the Emacs-like keybindings
 bindkey -e
-
-# Want case-insensitive matching only if there are no case-sensitive matches
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 # DRAKE: Gurobi/Mosek Licenses / SNOPT
 export GRB_LICENSE_FILE=$HOME/gurobi.lic
 export MOSEKLM_LICENSE_FILE=$HOME/mosek/mosek.lic
 export SNOPT_PATH=git
 
-# Update PATH
-export PATH=~/bin:~/.local/bin:$PATH:`python3 -m site --user-base`/bin
 export EDITOR=emacsclient
 export LESS='-R'
 
 # see zshoptions(1) for details on what these do
 # see also zshexpn(1) for details on how globbing works
-setopt append_history # better concurrent shell history sharing
 setopt auto_pushd # cd foo; cd bar; popd --> in foo again
-setopt complete_in_word # more intuitive completions
 setopt no_beep # BEEP
 setopt extended_glob # better globs
-setopt extended_history # better history
 # setopt glob_complete # (see manual for description & tradeoffs)
 setopt glob_star_short # ** means **/*, **/ means directory only **
-setopt hist_expire_dups_first # don't fill your history as quickly with junk
-setopt hist_ignore_space # ` command` doesn't save to history
-setopt hist_subst_pattern # better globs / parameter expansion
-setopt hist_reduce_blanks # `a  b` normalizes to `a b` in history
-setopt hist_verify # reduce oops I sudoed the wrong thing
 setopt interactive_comments # so pasting live to test works
 setopt ksh_glob # better globs
 setopt long_list_jobs # easier to read job stuff
 setopt null_glob # sane globbing
 setopt pipe_fail # fail when the first command in a pipeline fails
-setopt share_history # better concurrent shell history sharing
 setopt no_rm_star_silent # confirm on `rm *` (default, but let's be safe)
 setopt prompt_cr prompt_sp # don't clobber output without trailing newlines
 # setopt rm_star_wait # wait after confirmation on `rm *` to allow ^C
@@ -107,8 +75,9 @@ wttr()
 # Platform-dependent stuff
 source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
 
-source "${HOME}/dotfiles/scripts/zplugin.zsh"
-
-source ~/dotfiles/scripts/fzf.zsh
-
-source ~/dotfiles/scripts/update.zsh
+source "${HOME}/dotfiles/zsh/aliases.zsh"
+source "${HOME}/dotfiles/zsh/set_history.zsh"
+source "${HOME}/dotfiles/zsh/zplugin.zsh"
+source "${HOME}/dotfiles/zsh/fzf.zsh"
+source "${HOME}/dotfiles/zsh/completion.zsh"
+source "${HOME}/dotfiles/zsh/update.zsh"
