@@ -11,4 +11,5 @@ custom.el
 projectile-bookmarks.eld
 projectile.cache
 settings.el
+*.log
 *~
