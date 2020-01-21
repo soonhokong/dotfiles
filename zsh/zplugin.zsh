@@ -83,6 +83,4 @@ zplugin ice compile'{src/*.zsh,src/strategies/*}' atload'_zsh_autosuggest_start'
 zplugin load zsh-users/zsh-autosuggestions
 
 # Syntax highlighting
-# (compinit without `-i` spawns warning on `sudo -s`)
-zplugin ice wait'0' lucid atinit"ZPLGM[COMPINIT_OPTS]='-i' zpcompinit; zpcdreplay"
-zplugin load zdharma/fast-syntax-highlighting
+zplugin light zdharma/fast-syntax-highlighting
