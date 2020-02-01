@@ -477,20 +477,20 @@ Show FIXME/TODO/BUG(...) in special face only in comments and strings
 *** LSP
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-mode
-    :config
-    (add-hook 'c++-mode-hook #'lsp)
-    (add-hook 'python-mode-hook #'lsp)
-
-    ;; `-background-index' requires clangd v8+!
-    (setq lsp-clients-clangd-args '("--header-insertion=iwyu"
-                                    "--clang-tidy"))
-
+    ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
     :init
+    (setq lsp-keymap-prefix "s-l")
     (setq lsp-auto-guess-root t)       ; Detect project root
     (setq lsp-prefer-flymake nil)      ; Use lsp-ui and flycheck
     (setq lsp-enable-xref t)
     (setq lsp-before-save-edits nil)
-
+    :hook ((c++-mode . lsp)
+	   (python-mode . lsp)
+	   (lsp-mode . lsp-enable-which-key-integration))
+    :config
+    ;; `-background-index' requires clangd v8+!
+    (setq lsp-clients-clangd-args '("--header-insertion=iwyu"
+				    "--clang-tidy"))
     :commands lsp)
 
   (use-package lsp-ui
