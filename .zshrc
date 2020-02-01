@@ -77,7 +77,7 @@ source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
 
 source "${HOME}/dotfiles/zsh/aliases.zsh"
 source "${HOME}/dotfiles/zsh/set_history.zsh"
-source "${HOME}/dotfiles/zsh/zplugin.zsh"
+source "${HOME}/dotfiles/zsh/zinit.zsh"
 source "${HOME}/dotfiles/zsh/fzf.zsh"
 source "${HOME}/dotfiles/zsh/completion.zsh"
 source "${HOME}/dotfiles/zsh/update.zsh"
