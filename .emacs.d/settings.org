@@ -13,9 +13,11 @@
 
 * Platform-dependent
 ** macOS
-** Map command key to meta
+*** Map command/option/control
 #+BEGIN_SRC emacs-lisp
   (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier 'super)
+  (setq mac-control-modifier 'control)
 #+END_SRC
 *** "ls does not support --dired; see ‘dired-use-ls-dired’ for more details."
 #+BEGIN_SRC emacs-lisp
