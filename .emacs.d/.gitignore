@@ -3,6 +3,7 @@ auto-save-list/
 backups/
 elpa/
 elpy/
+eshell/
 transient/
 var/
 .last-package-update-day
@@ -10,6 +11,7 @@ var/
 custom.el
 projectile-bookmarks.eld
 projectile.cache
+recentf
 settings.el
 *.log
 *~
