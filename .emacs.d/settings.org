@@ -285,7 +285,7 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
 	;; If the terminal buffer doesn't exist, create one
 	(multi-term)
 	)))
-  (global-set-key (kbd "C-`") 'soonho-visor-style-terminal)
+  (global-set-key (kbd "M-`") 'soonho-visor-style-terminal)
 #+END_SRC
 * Helm settings
 #+BEGIN_SRC emacs-lisp
