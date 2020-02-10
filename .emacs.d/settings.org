@@ -576,6 +576,8 @@ Show FIXME/TODO/BUG(...) in special face only in comments and strings
       :mode (("\\.bazel\\'"  . bazel-mode)
 	     ("\\.bzl\\'" . bazel-mode)
 	     ("WORKSPACE\\'"  . bazel-mode)))
+  (require 'bazel-mode)
+  (require 'bazel-build)
 #+END_SRC
 ** SMT2
 #+BEGIN_SRC emacs-lisp

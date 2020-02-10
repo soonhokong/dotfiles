@@ -10,6 +10,7 @@
 
 ;; Add ~/.emacs.d/lisp in the load-path
 (push (expand-file-name "lisp" user-emacs-directory) load-path)
+(push (expand-file-name "lisp/emacs-bazel-mode" user-emacs-directory) load-path)
 (require 'init-const)
 
 ;; Ignore "following symbolic link warning"
