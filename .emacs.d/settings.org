@@ -97,10 +97,8 @@
 #+END_SRC
 ** Turn off newbie stuff
 #+BEGIN_SRC emacs-lisp
-  (if (display-graphic-p)
-      (progn
-	(tool-bar-mode -1)
-	(scroll-bar-mode -1)))
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
   (blink-cursor-mode -1)
   (setq inhibit-startup-message t)
   (setq initial-scratch-message nil)
