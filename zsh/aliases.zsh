@@ -6,6 +6,7 @@ alias ll='exa -lh --group-directories-first'
 # emacs
 alias e='emacsclient'
 alias et='emacsclient -t'
+alias ec='emacsclient -c'
 
 # Aliases for bazel
 alias btd='bazel test --compilation_mode=dbg'
