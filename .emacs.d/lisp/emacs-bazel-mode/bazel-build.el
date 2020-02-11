@@ -46,7 +46,10 @@
 
 (defun bazel-build--read-target (prompt)
   "Read a Bazel build target from the minibuffer.  PROMPT is a read-only prompt."
-  (let* ((file-name (buffer-file-name))
+  (let* ((file-name
+	  (if (eq major-mode 'dired-mode)
+	      (dired-current-directory)
+	    (buffer-file-name)))
          (workspace-root
           (or (bazel-build--find-workspace-root file-name)
               (user-error "Not in a Bazel workspace.  No WORKSPACE file found")))
