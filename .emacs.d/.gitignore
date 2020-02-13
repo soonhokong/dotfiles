@@ -6,6 +6,7 @@ elpy/
 eshell/
 transient/
 var/
+amx-items
 .last-package-update-day
 .lsp-session-*
 custom.el
