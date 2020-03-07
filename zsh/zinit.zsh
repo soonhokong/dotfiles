@@ -13,7 +13,7 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Install an extension for zinit for managing "shims"
-zinit load zinit-zsh/z-a-bin-gem-node
+zinit load soonho-tri/zabingemnode
 
 # Load the pure theme, with zsh-async library that's bundled with it.
 RPROMPT='%F{white}%*'  # Display time on the right
@@ -83,4 +83,4 @@ zinit ice compile'{src/*.zsh,src/strategies/*}' atload'_zsh_autosuggest_start'
 zinit load zsh-users/zsh-autosuggestions
 
 # Syntax highlighting
-zinit light zdharma/fast-syntax-highlighting
+zinit light soonho-tri/fastsyntaxhighlighting
