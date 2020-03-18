@@ -83,4 +83,5 @@ zinit ice compile'{src/*.zsh,src/strategies/*}' atload'_zsh_autosuggest_start'
 zinit load zsh-users/zsh-autosuggestions
 
 # Syntax highlighting
-zinit light soonho-tri/fastsyntaxhighlighting
+zinit light robobenklein/zdharma-history-search-multi-word
+zinit light robobenklein/zdharma-fast-syntax-highlighting
