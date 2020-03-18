@@ -4,7 +4,7 @@ alias l='exa -alh --group-directories-first'
 alias ll='exa -lh --group-directories-first'
 
 # emacs
-alias e='emacsclient -c'
+alias e='emacsclient -c -t'
 alias et='emacsclient -t'
 
 # Aliases for bazel
