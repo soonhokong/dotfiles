@@ -74,7 +74,7 @@ zinit load zsh-users/zsh-completions
 
 # History search by `Ctrl+R`
 zinit ice compile'{hsmw-*,test/*}'
-zinit load zdharma/history-search-multi-word
+zinit load robobenklein/zdharma-history-search-multi-word
 
 # Autosuggestions
 ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -83,5 +83,4 @@ zinit ice compile'{src/*.zsh,src/strategies/*}' atload'_zsh_autosuggest_start'
 zinit load zsh-users/zsh-autosuggestions
 
 # Syntax highlighting
-zinit light robobenklein/zdharma-history-search-multi-word
 zinit light robobenklein/zdharma-fast-syntax-highlighting
