@@ -3,9 +3,8 @@ update() {
 	# Pull dotfiles
 	git -C ~/dotfiles pull
 
-	# disable zinit update for now
-	# zinit self-update
-	# zinit update
+	zinit self-update
+	zinit update
 
 	# Update / upgrade emacs packages
 	emacs --no-window-system --eval "(auto-package-update-now)" --kill
