@@ -436,6 +436,21 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
       (add-to-list 'dash-at-point-mode-alist '(python-mode . "python"))
       :bind (("C-c d" . dash-at-point))))
 #+END_SRC
+* Yasnippet
+#+BEGIN_SRC emacs-lisp
+(use-package yasnippet
+  :commands (yas-minor-mode) ; autoload `yasnippet' when `yas-minor-mode' is called
+                                        ; using any means: via a hook or by user
+                                        ; Feel free to add more commands to this
+                                        ; list to suit your needs.
+  :init ; stuff to do before requiring the package
+  (progn
+    (add-hook 'prog-mode-hook #'yas-minor-mode))
+  :config ; stuff to do after requiring the package
+  (progn
+    (yas-reload-all)))
+#+END_SRC
+
 * Language-Specific
 ** C++
 *** Basics
