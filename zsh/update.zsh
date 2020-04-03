@@ -1,3 +1,12 @@
+restart_emacs() {
+    # Restart emacs daemon
+    if [ "$(uname -s)" = 'Darwin' ]; then
+	brew services restart d12frosted/emacs-plus/emacs-plus
+    else
+        systemctl --user restart emacs.service
+    fi
+}
+
 update() {
     update_common() {
 	# Pull dotfiles
@@ -19,9 +28,6 @@ update() {
 
 	# MacOS Software Update
 	softwareupdate -i -a
-
-	# Restart emacs daemon
-	brew services restart d12frosted/emacs-plus/emacs-plus
     }
 
     update_ubuntu() {
@@ -30,9 +36,6 @@ update() {
 	sudo apt-get upgrade --yes
 	sudo apt-get autoremove
 	sudo apt-get autoclean
-
-        # Restart emacs daemon
-        systemctl --user restart emacs.service
     }
 
     update_common
@@ -41,4 +44,5 @@ update() {
     else
 	update_ubuntu
     fi
+    restart_emacs
 }
