@@ -618,7 +618,7 @@ From https://realpython.com/emacs-the-best-python-editor/
     ;; (setq-default TeX-master nil)
     (add-to-list 'TeX-command-list
 		 '("LaTeXMK"
-		   "latexmk -pvc -CF -bibtex -pdf %s"
+		   "latexmk -pvc -CF -xelatex %s"
 		   TeX-run-TeX nil t) t)
     (add-hook 'LaTeX-mode-hook
 	      (lambda ()
