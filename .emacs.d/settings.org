@@ -321,7 +321,9 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
 	  helm-quick-update                     t
 	  helm-recentf-fuzzy-match              t
 	  helm-semantic-fuzzy-match             t)
-    (setq completion-styles `(basic partial-completion emacs22 initials 'helm-flex)))
+    ;; See https://github.com/syl20bnr/spacemacs/issues/13100
+    (setq helm-completion-style 'emacs)
+    (setq completion-styles '(helm-flex)))
   (use-package helm-rg)
   (use-package helm-company)
   (use-package helm-projectile
