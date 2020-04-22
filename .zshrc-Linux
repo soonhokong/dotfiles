@@ -2,3 +2,9 @@ export GUROBI_PATH=/opt/gurobi801/linux64
 export PATH=$PATH:/usr/local/go/bin
 
 export BAZEL_ENABLE_DOCKER_SANDBOX=true
+
+if [ -e "${HOME}/.pyenv" ]; then
+    export PATH="/home/soonhokong/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
