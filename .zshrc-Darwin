@@ -3,3 +3,6 @@ export COPYFILE_DISABLE=true
 
 # Homebrew
 export PATH="/usr/local/sbin:$PATH"
+
+# pyenv
+command -v pyenv && eval "$(pyenv init -)"
