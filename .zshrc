@@ -1,8 +1,10 @@
+[ -d "${HOME}/.poetry" ] || sh -c "curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python"
 
 # autoload
 autoload -Uz run-help
 autoload -Uz add-zsh-hook
 autoload -Uz colors && colors
+[ -d "${HOME}/.poetry" ] && fpath+=~/.zfunc
 autoload -Uz compinit && compinit -u
 autoload -Uz is-at-least
 
@@ -79,5 +81,6 @@ source "${HOME}/dotfiles/zsh/aliases.zsh"
 source "${HOME}/dotfiles/zsh/set_history.zsh"
 source "${HOME}/dotfiles/zsh/zinit.zsh"
 source "${HOME}/dotfiles/zsh/fzf.zsh"
+source "${HOME}/dotfiles/zsh/update.zsh"
 source "${HOME}/dotfiles/zsh/completion.zsh"
 source "${HOME}/dotfiles/zsh/update.zsh"

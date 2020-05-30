@@ -45,4 +45,7 @@ update() {
 	update_ubuntu
     fi
     restart_emacs
+
+    # poetry, https://python-poetry.org
+    poetry self update
 }
