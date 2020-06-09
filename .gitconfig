@@ -1,6 +1,7 @@
 [user]
         name = Soonho Kong
         email = soonho.kong@tri.global
+        useConfigOnly = true
 
 [apply]
   whitespace = nowarn
