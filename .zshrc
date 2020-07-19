@@ -82,7 +82,6 @@ source "${HOME}/dotfiles/zsh/zinit.zsh"
 source "${HOME}/dotfiles/zsh/fzf.zsh"
 source "${HOME}/dotfiles/zsh/update.zsh"
 source "${HOME}/dotfiles/zsh/completion.zsh"
-source "${HOME}/dotfiles/zsh/update.zsh"
 
 () {
   setopt extendedglob local_options

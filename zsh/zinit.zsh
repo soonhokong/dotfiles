@@ -13,7 +13,7 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Install an extension for zinit for managing "shims"
-zinit load soonho-tri/zabingemnode
+zinit light soonho-tri/zabingemnode
 
 # Load the pure theme, with zsh-async library that's bundled with it.
 RPROMPT='%F{white}%*'  # Display time on the right
@@ -28,14 +28,14 @@ fi
 
 # FZF
 zinit ice from"gh-r" fbin"fzf" bpick"${BPICK}"
-zinit load junegunn/fzf-bin
+zinit light junegunn/fzf-bin
 
 # fzf-tmux script, completions for many programs (e.g. kill <TAB>)
 # and key bindings
 zinit ice multisrc"shell/{completion,key-bindings}.zsh" \
     id-as"junegunn/fzf_completions" pick"/dev/null" \
     sbin"bin/fzf-tmux"
-zinit load junegunn/fzf
+zinit light junegunn/fzf
 
 # FD
 zinit ice from"gh-r" fbin"fd/fd" as"program" mv"fd* -> fd" pick"fd/fd" bpick"${BPICK}"
@@ -70,17 +70,17 @@ zinit light "wookayin/fzf-fasd"
 
 # Additional completion definitions
 zinit ice blockf atclone'zinit creinstall -q .' atpull'%atclone'
-zinit load zsh-users/zsh-completions
+zinit light zsh-users/zsh-completions
 
 # History search by `Ctrl+R`
 zinit ice compile'{hsmw-*,test/*}'
-zinit load robobenklein/zdharma-history-search-multi-word
+zinit light robobenklein/zdharma-history-search-multi-word
 
 # Autosuggestions
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 zinit ice compile'{src/*.zsh,src/strategies/*}' atload'_zsh_autosuggest_start'
-zinit load zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-autosuggestions
 
 # Syntax highlighting
 zinit light robobenklein/zdharma-fast-syntax-highlighting
