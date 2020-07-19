@@ -5,7 +5,7 @@ autoload -Uz run-help
 autoload -Uz add-zsh-hook
 autoload -Uz colors && colors
 [ -d "${HOME}/.poetry" ] && fpath+=~/.zfunc
-autoload -Uz compinit && compinit -u
+autoload -Uz compinit
 autoload -Uz is-at-least
 
 # LANGUAGE must be set by en_US
@@ -75,8 +75,7 @@ wttr()
 }
 
 # Platform-dependent stuff
-source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
-
+source "${HOME}/dotfiles/zsh/platform-$(uname).zsh"
 source "${HOME}/dotfiles/zsh/aliases.zsh"
 source "${HOME}/dotfiles/zsh/set_history.zsh"
 source "${HOME}/dotfiles/zsh/zinit.zsh"
@@ -84,3 +83,12 @@ source "${HOME}/dotfiles/zsh/fzf.zsh"
 source "${HOME}/dotfiles/zsh/update.zsh"
 source "${HOME}/dotfiles/zsh/completion.zsh"
 source "${HOME}/dotfiles/zsh/update.zsh"
+
+() {
+  setopt extendedglob local_options
+  if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+    compinit
+  else
+    compinit -C
+  fi
+}

@@ -17,6 +17,10 @@ update() {
 
 	# Update / upgrade emacs packages
 	emacs --no-window-system --eval "(auto-package-update-now)" --kill
+
+	if [ -e "${HOME}/.pyenv" ]; then
+	    pyenv rehash
+	fi
     }
 
     update_darwin() {
