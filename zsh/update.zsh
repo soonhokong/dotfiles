@@ -1,7 +1,7 @@
 restart_emacs() {
     # Restart emacs daemon
     if [ "$(uname -s)" = 'Darwin' ]; then
-	brew services restart d12frosted/emacs-plus/emacs-plus
+	brew services restart d12frosted/emacs-plus/emacs-plus@27
     else
         systemctl --user restart emacs.service
     fi
