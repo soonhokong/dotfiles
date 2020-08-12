@@ -322,8 +322,11 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
 	  helm-recentf-fuzzy-match              t
 	  helm-semantic-fuzzy-match             t)
     ;; See https://github.com/syl20bnr/spacemacs/issues/13100
-    (setq helm-completion-style 'emacs)
-    (setq completion-styles '(helm-flex)))
+  (setq helm-completion-style 'emacs)
+  (if (version< emacs-version "27")
+      (setq completion-styles '(helm-flex))
+    (setq completion-styles '(flex))))
+
   (use-package helm-rg)
   (use-package helm-company)
   (use-package helm-projectile
