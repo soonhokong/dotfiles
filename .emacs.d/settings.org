@@ -555,11 +555,6 @@ language server responses are in 800k - 3M range.
 
     (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
-  (use-package company-lsp
-    :requires company
-    :config
-    (push 'company-lsp company-backends))
-
   (setq lsp-completion-provider :capf)
 
 
