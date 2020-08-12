@@ -215,6 +215,10 @@ From https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parenthes
 #+BEGIN_SRC emacs-lisp
   (use-package auto-package-update)
 #+END_SRC
+** Default Directory
+#+BEGIN_SRC emacs-lisp
+  (setq default-directory "~/")
+#+END_SRC
 * Useful emacs-lisp libraries
 #+BEGIN_SRC emacs-lisp
   (use-package dash)
