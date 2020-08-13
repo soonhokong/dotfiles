@@ -38,7 +38,7 @@ zinit ice multisrc"shell/{completion,key-bindings}.zsh" \
 zinit light junegunn/fzf
 
 # FD
-zinit ice from"gh-r" fbin"fd/fd" as"program" mv"fd* -> fd" pick"fd/fd" bpick"${BPICK}"
+zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd" bpick"${BPICK}"
 zinit light sharkdp/fd
 
 # EXA
