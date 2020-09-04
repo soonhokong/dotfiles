@@ -46,7 +46,7 @@ zinit ice from"gh-r" fbin"exa" as"program" mv"exa* -> exa" bpick"${BPICK}"
 zinit light ogham/exa
 
 # RG
-zinit ice from"gh-r" fbin"rg/rg" as"program" mv"ripgrep* -> rg" pick"rp/rg" bpick"${BPICK}"
+zinit ice from"gh-r" as"program" mv"ripgrep* -> ripgrep" pick"ripgrep/rg" bpick"${BPICK}"
 zinit light BurntSushi/ripgrep
 
 # Bazel completion
