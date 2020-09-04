@@ -535,7 +535,10 @@ language server responses are in 800k - 3M range.
     :config
     ;; `-background-index' requires clangd v8+!
     (setq lsp-clients-clangd-args '("--header-insertion=iwyu"
-				    "--clang-tidy"))
+				    "--limit-results=0"
+				    "--suggest-missing-includes"
+				    "--clang-tidy"
+    ))
     :commands lsp)
 
   (use-package lsp-ui
