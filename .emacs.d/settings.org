@@ -365,7 +365,8 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
     :hook (c++-mode . flyspell-prog-mode)
     :init
       (global-flycheck-mode)
-      (diminish 'flycheck-mode "fc"))
+      (diminish 'flycheck-mode "fc")
+      (setq flycheck-checker-error-threshold 9999))
 #+END_SRC
 * Auto Completion (Company)
 #+BEGIN_SRC emacs-lisp
