@@ -101,6 +101,8 @@ if [ -e "${HOME}/.pyenv" ]; then
 	    export PATH="${HOME}/.pyenv/bin:$PATH"
 	    eval "$(pyenv init - --no-rehash zsh)"
 	    eval "$(pyenv virtualenv-init -)"
+	    # driving-specific
+	    export DRIVING_BAZEL_REMOTE_CACHE=s3
 	    ;;
     esac
 fi
