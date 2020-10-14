@@ -29,13 +29,11 @@ cask 'google-chrome'
 cask 'gureumkim'
 cask 'iterm2'
 cask 'omnigraffle'
-cask 'papers'
 cask 'quicksilver'
 cask 'skim'
 cask 'slack'
 cask 'sync'
 cask 'the-unarchiver'
-cask 'x2goclient'
 
 cask 'mactex'
 
