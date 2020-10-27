@@ -1,12 +1,17 @@
 ;;; Emacs Initialization file
 ;;; Soonho Kong <soonho.kong@gmail.com>
 (require 'package)
+
 ;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(when (version< emacs-version "27.0") (package-initialize))
+
+;; initialize packages
+(unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
+  (setq package-enable-at-startup nil)          ; To prevent initializing twice
+  (package-initialize))
 
 ;; Add ~/.emacs.d/lisp in the load-path
 (push (expand-file-name "lisp" user-emacs-directory) load-path)
@@ -17,7 +22,9 @@
 (setq vc-handled-backends nil)
 
 ;; use-package
-(unless (package-installed-p 'use-package) (package-refresh-contents)
+(unless (package-installed-p 'use-package)
+  (when (not package-archive-contents)
+    (package-refresh-contents))
   (package-install 'use-package)
   (package-install 'diminish)
   (package-install 'bind-key))
