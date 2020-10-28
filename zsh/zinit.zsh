@@ -28,7 +28,7 @@ fi
 
 # FZF
 zinit ice from"gh-r" as"program" bpick"${BPICK}"
-zinit light junegunn/fzf-bin
+zinit light junegunn/fzf
 
 # fzf-tmux script, completions for many programs (e.g. kill <TAB>)
 # and key bindings
