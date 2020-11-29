@@ -12,3 +12,10 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 setopt complete_in_word # more intuitive completions
+
+# macOS
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+  autoload -Uz compinit
+  compinit
+fi
