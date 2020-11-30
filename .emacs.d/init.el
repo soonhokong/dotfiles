@@ -2,9 +2,9 @@
 ;;; Soonho Kong <soonho.kong@gmail.com>
 (require 'package)
 
-;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+(setq package-archives nil)
+(add-to-list 'package-archives '("gnu" . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/gnu/") t)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
