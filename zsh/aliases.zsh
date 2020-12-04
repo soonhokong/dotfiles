@@ -12,3 +12,6 @@ alias btd='bazel test --compilation_mode=dbg'
 alias bto='bazel test --compilation_mode=opt'
 alias bbd='bazel build --compilation_mode=dbg'
 alias bbo='bazel build --compilation_mode=opt'
+
+# c => pygmentize
+alias c='pygmentize -g'
