@@ -18,3 +18,6 @@ alias c='pygmentize -g'
 
 # git
 alias g='git'
+
+# brew / pyenv. See https://github.com/pyenv/pyenv/issues/106
+alias brew="env PATH=\"${PATH//$(pyenv root)\/shims:/}\" /usr/local/bin/brew"
