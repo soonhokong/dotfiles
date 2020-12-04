@@ -15,3 +15,6 @@ alias bbo='bazel build --compilation_mode=opt'
 
 # c => pygmentize
 alias c='pygmentize -g'
+
+# git
+alias g='git'
