@@ -78,7 +78,7 @@ unset -f bind-git-helper
 
 # c - browse chrome history
 if [ "$(uname -s)" = 'Darwin' ]; then
-    c() {
+    ch() {
 	local cols sep
 	export cols=$(( COLUMNS / 3 ))
 	export sep='{::}'
