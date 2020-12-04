@@ -16,7 +16,7 @@ update() {
 	zinit update
 
 	# Update / upgrade emacs packages
-	emacs --no-window-system --eval "(auto-package-update-now)" --kill
+	emacs --no-window-system --eval "(package-utils-upgrade-all)" --kill
 
 	if [ -e "${HOME}/.pyenv" ]; then
 	    pyenv rehash
