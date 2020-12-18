@@ -27,7 +27,8 @@
 *** Lion-style Fullscreen
 #+BEGIN_SRC emacs-lisp
   (when (string= system-type "darwin")
-    (setq ns-use-native-fullscreen nil))
+    (setq ns-use-native-fullscreen nil)
+    (add-to-list 'default-frame-alist '(fullscreen . fullboth)))
 #+END_SRC
 ** Linux
 *** Fullscreen
