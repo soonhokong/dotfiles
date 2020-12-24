@@ -4,9 +4,10 @@
 
 (setq package-enable-at-startup nil)
 (setq package-archives nil)
-(add-to-list 'package-archives '("gnu" . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/gnu/") t)
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(setq package-archives
+      '(("melpa" . "https://melpa.org/packages/")
+        ("org"   . "https://orgmode.org/elpa/")
+        ("gnu"   . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/gnu/")))
 
 ;; initialize packages
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
