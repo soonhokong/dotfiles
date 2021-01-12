@@ -1,5 +1,5 @@
 # Update PATH
-export PATH="~/bin:~/.local/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
