@@ -6,3 +6,6 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 
 # poetry
 export PATH="$PATH:$HOME/.poetry/bin"
+
+# GHS
+export GHS_LMHOST=localhost
