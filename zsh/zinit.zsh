@@ -17,7 +17,7 @@ zinit light soonho-tri/zabingemnode
 
 # Load the pure theme, with zsh-async library that's bundled with it.
 RPROMPT='%F{white}%*'  # Display time on the right
-zinit ice pick"async.zsh" src"pure.zsh"
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 
 if [ "$(uname -s)" = 'Linux' ]; then
