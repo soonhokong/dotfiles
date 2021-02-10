@@ -68,10 +68,6 @@ zinit light "clvv/fasd"
 eval "$(fasd --init auto)"
 zinit light "wookayin/fzf-fasd"
 
-# Additional completion definitions
-zinit ice blockf atclone'zinit creinstall -q .' atpull'%atclone'
-zinit light zsh-users/zsh-completions
-
 # History search by `Ctrl+R`
 zinit ice compile'{hsmw-*,test/*}'
 zinit light robobenklein/zdharma-history-search-multi-word
@@ -82,5 +78,10 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 zinit ice compile'{src/*.zsh,src/strategies/*}' atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
-# Syntax highlighting
-zinit light robobenklein/zdharma-fast-syntax-highlighting
+zinit wait lucid light-mode for \
+  atinit"zicompinit; zicdreplay" \
+      zdharma/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions
