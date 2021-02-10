@@ -1,7 +1,7 @@
 ZINIT_HOME=$HOME/.zinit
 if [ ! -d "${ZINIT_HOME}" ]; then
    mkdir ~/.zinit
-   git clone https://github.com/robobenklein/zinit.git ~/.zinit/bin
+   git clone https://github.com/soonho-tri/zinit.git ~/.zinit/bin
 fi
 if [ ! -f "${ZINIT_HOME}/bin/zinit.zsh" ]; then
     echo "zinit is not properly installed. Please check."
