@@ -42,7 +42,7 @@ zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd" bpick"${BPICK}"
 zinit light sharkdp/fd
 
 # EXA
-zinit ice from"gh-r" fbin"exa" as"program" mv"exa* -> exa" bpick"${BPICK}"
+zinit ice from"gh-r" fbin"exa" as"program" mv"exa* -> exa" pick"bin/exa" bpick"${BPICK}"
 zinit light ogham/exa
 
 # RG
