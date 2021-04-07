@@ -1,0 +1,2 @@
+build --color=yes
+test --color=yes
