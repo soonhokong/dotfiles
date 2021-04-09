@@ -74,6 +74,21 @@ wttr()
     curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
 }
 
+if [ -e "${HOME}/.pyenv" ]; then
+    case $(uname -s) in
+	Darwin)
+	    eval "$(pyenv init - --no-rehash zsh)"
+	    ;;
+	Linux)
+	    export PATH="${HOME}/.pyenv/bin:$PATH"
+	    eval "$(pyenv init - --no-rehash zsh)"
+	    eval "$(pyenv virtualenv-init -)"
+	    # driving-specific
+	    export DRIVING_BAZEL_REMOTE_CACHE=s3
+	    ;;
+    esac
+fi
+
 # Platform-dependent stuff
 source "${HOME}/dotfiles/zsh/platform-$(uname).zsh"
 source "${HOME}/dotfiles/zsh/aliases.zsh"
@@ -91,18 +106,3 @@ source "${HOME}/dotfiles/zsh/completion.zsh"
     compinit -C
   fi
 }
-
-if [ -e "${HOME}/.pyenv" ]; then
-    case $(uname -s) in
-	Darwin)
-	    eval "$(pyenv init - --no-rehash zsh)"
-	    ;;
-	Linux)
-	    export PATH="${HOME}/.pyenv/bin:$PATH"
-	    eval "$(pyenv init - --no-rehash zsh)"
-	    eval "$(pyenv virtualenv-init -)"
-	    # driving-specific
-	    export DRIVING_BAZEL_REMOTE_CACHE=s3
-	    ;;
-    esac
-fi
