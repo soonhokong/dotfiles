@@ -42,11 +42,6 @@ export WORDCHARS='*?.[]~&;!#$%^(){}<>'
 # Use the Emacs-like keybindings
 bindkey -e
 
-# DRAKE: Gurobi/Mosek Licenses / SNOPT
-export GRB_LICENSE_FILE=$HOME/gurobi.lic
-export MOSEKLM_LICENSE_FILE=$HOME/mosek/mosek.lic
-export SNOPT_PATH=git
-
 export EDITOR=emacsclient
 export LESS='-R'
 
@@ -106,3 +101,6 @@ source "${HOME}/dotfiles/zsh/completion.zsh"
     compinit -C
   fi
 }
+
+export PATH="$HOME/.poetry/bin:$PATH"
+export PATH=$HOME/.toolbox/bin:$PATH
