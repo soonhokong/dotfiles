@@ -5,7 +5,7 @@ export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
 
 # poetry
-export PATH="$PATH:$HOME/.poetry/bin"
+export POETRY_HOME="$HOME/.poetry"
+export PATH="$PATH:$POETRY_HOME/bin"
 
-# GHS
-export GHS_LMHOST=localhost
+. "$HOME/.cargo/env"

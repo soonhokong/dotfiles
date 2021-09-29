@@ -1,4 +1,4 @@
-[ -d "${HOME}/.poetry" ] || sh -c "curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python"
+[ -d "${POETRY_HOME}" ] || curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python3 -
 
 # autoload
 autoload -Uz run-help
