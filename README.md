@@ -64,6 +64,6 @@ WantedBy=default.target
 
 Run the following to enable and start a daemon.
 ```bash
-systemctl enable --user emacs                                                                                                                                                                                                                                                    9:49:58
+systemctl enable --user emacs
 systemctl start --user emacs
 ```
