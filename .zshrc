@@ -64,7 +64,7 @@ setopt prompt_cr prompt_sp # don't clobber output without trailing newlines
 # Weather
 wttr()
 {
-    local request="wttr.in/${1-02476}?m"
+    local request="wttr.in/${1-95014}?m"
     [ "$(tput cols)" -lt 125 ] && request+='?n'
     curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
 }
