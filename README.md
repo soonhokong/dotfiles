@@ -41,29 +41,10 @@ touch ~/.emacs.d/custom.el
 emacs daemon for Ubuntu
 -----------------------
 
-Create `~/.config/systemd/user/emacs.service`.
-```
-## If your Emacs is installed in a non-standard location, you may need
-## to copy this file to a standard directory, eg ~/.config/systemd/user/ .
-## If you install this file by hand, change the "Exec" lines below
-## to use absolute file names for the executables.
-[Unit]
-Description=Emacs text editor
-Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/emacs --fg-daemon
-ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
-Environment=SSH_AUTH_SOCK=%t/keyring/ssh
-Restart=on-failure
-
-[Install]
-WantedBy=default.target
-```
-
 Run the following to enable and start a daemon.
 ```bash
+mkdir -p ~/.config/systemd/user
+cp ~/dotfiles/ubuntu/emacs.service ~/.config/systemd/user/emacs.service
 systemctl enable --user emacs
 systemctl start --user emacs
 ```
