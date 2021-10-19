@@ -26,6 +26,10 @@ else
     BPICK="(*darwin*amd*)|(*macos*)|(*apple*darwin*)"
 fi
 
+# ssh-agent plugin
+zt() { zinit depth'3' lucid ${1/#[0-9][a-c]/wait"$1"} "${@:2}"; }
+zt for OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
+
 # FZF
 zinit ice from"gh-r" as"program" bpick"${BPICK}"
 zinit light junegunn/fzf
