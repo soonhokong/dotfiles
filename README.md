@@ -47,4 +47,5 @@ mkdir -p ~/.config/systemd/user
 cp ~/dotfiles/ubuntu/emacs.service ~/.config/systemd/user/emacs.service
 systemctl enable --user emacs
 systemctl start --user emacs
+systemctl restart --user emacs  # to restart
 ```
