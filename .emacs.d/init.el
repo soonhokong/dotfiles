@@ -1,6 +1,7 @@
 ;;; Emacs Initialization file
 ;;; Soonho Kong <soonho.kong@gmail.com>
 (require 'package)
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 (setq package-enable-at-startup nil)
 (setq package-archives nil)
