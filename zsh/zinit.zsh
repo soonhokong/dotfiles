@@ -84,7 +84,7 @@ zinit light zsh-users/zsh-autosuggestions
 
 zinit wait lucid light-mode for \
   atinit"zicompinit; zicdreplay" \
-      zdharma/fast-syntax-highlighting \
+      robobenklein/zdharma-fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
