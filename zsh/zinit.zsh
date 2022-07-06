@@ -1,7 +1,7 @@
 ZINIT_HOME=$HOME/.zinit
 if [ ! -d "${ZINIT_HOME}" ]; then
    mkdir ~/.zinit
-   git clone https://github.com/soonho-tri/zinit.git ~/.zinit/bin
+   git clone https://github.com/zdharma-continuum/zinit.git ~/.zinit/bin
 fi
 if [ ! -f "${ZINIT_HOME}/bin/zinit.zsh" ]; then
     echo "zinit is not properly installed. Please check."
@@ -46,7 +46,7 @@ zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd" bpick"${BPICK}"
 zinit light sharkdp/fd
 
 # EXA
-zinit ice from"gh-r" fbin"exa" as"program" mv"exa* -> exa" pick"bin/exa" bpick"${BPICK}"
+zinit ice from"gh-r" fbin"exa" as"program" pick"bin/exa" bpick"${BPICK}"
 zinit light ogham/exa
 
 # RG
