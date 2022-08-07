@@ -273,7 +273,7 @@ From http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
 
   (defun soonho-visor-style-terminal ()
     (interactive)
-    (let ((name_of_terminal_buffer "*terminal<1>*"))
+    (let ((name_of_terminal_buffer "*vterminal<1>*"))
       (if (buffer-exists name_of_terminal_buffer)
 	  ;; If the terminal buffer exists
 	  (if (string= (buffer-name) name_of_terminal_buffer)
