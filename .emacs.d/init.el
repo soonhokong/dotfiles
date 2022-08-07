@@ -1,15 +1,13 @@
 ;;; Emacs Initialization file
 ;;; Soonho Kong <soonho.kong@gmail.com>
 (require 'package)
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 (setq package-enable-at-startup nil)
 (setq package-archives nil)
 (setq package-archives
-      '(("melpa" . "https://melpa.org/packages/")
-        ("org"   . "https://orgmode.org/elpa/")
-        ;; ("gnu"   . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/gnu/")
-        ("gnu"   . "https://elpa.gnu.org/packages/")))
+      '(("melpa"  . "https://melpa.org/packages/")
+        ("gnu"    . "https://elpa.gnu.org/packages/")
+	("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
 ;; initialize packages
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
@@ -40,10 +38,11 @@
 (require 'bind-key)                ;; if you use any :bind variant
 
 (use-package org
-  :ensure org-plus-contrib
   :config
     (setq org-src-tab-acts-natively t)
     (setq org-src-fontify-natively t))
+
+(use-package org-contrib)
 
 ;; ----------------------
 ;; Load settings.org file
@@ -55,4 +54,3 @@
 ;; -------------------------
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 (if (file-exists-p custom-file) (load custom-file))
-
