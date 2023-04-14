@@ -12,9 +12,6 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Install an extension for zinit for managing "shims"
-zinit light soonho-tri/zabingemnode
-
 # Load the pure theme, with zsh-async library that's bundled with it.
 RPROMPT='%F{white}%*'  # Display time on the right
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
@@ -74,7 +71,7 @@ zinit light "wookayin/fzf-fasd"
 
 # History search by `Ctrl+R`
 zinit ice compile'{hsmw-*,test/*}'
-zinit light robobenklein/zdharma-history-search-multi-word
+zinit light zdharma-continuum/history-search-multi-word
 
 # Autosuggestions
 ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -84,7 +81,7 @@ zinit light zsh-users/zsh-autosuggestions
 
 zinit wait lucid light-mode for \
   atinit"zicompinit; zicdreplay" \
-      robobenklein/zdharma-fast-syntax-highlighting \
+      zdharma-continuum/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
