@@ -133,7 +133,7 @@ From https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parenthes
 #+BEGIN_SRC emacs-lisp
    (use-package doom-themes
      :init
-     (load-theme 'doom-one t)
+     (load-theme 'doom-dracula t)
      :config
      ;; Global settings (defaults)
      (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
