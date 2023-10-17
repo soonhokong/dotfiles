@@ -42,8 +42,6 @@
     (setq org-src-tab-acts-natively t)
     (setq org-src-fontify-natively t))
 
-(use-package org-contrib)
-
 ;; ----------------------
 ;; Load settings.org file
 ;; ----------------------
