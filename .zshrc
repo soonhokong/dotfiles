@@ -1,5 +1,3 @@
-[ -d "${POETRY_HOME}" ] || curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python3 -
-
 # autoload
 autoload -Uz run-help
 autoload -Uz add-zsh-hook
