@@ -42,9 +42,9 @@ zinit light junegunn/fzf
 zinit ice from"gh-r" as"program" mv"fd* -> fd" pick"fd/fd" bpick"${BPICK}"
 zinit light sharkdp/fd
 
-# EXA
-zinit ice from"gh-r" as"program" pick"bin/exa" bpick"${BPICK}"
-zinit light ogham/exa
+# EZA
+zinit ice from"gh-r" as"program" pick"bin/eza" bpick"${BPICK}"
+zinit light eza-community/eza
 
 # RG
 zinit ice from"gh-r" as"program" mv"ripgrep* -> ripgrep" pick"ripgrep/rg" bpick"${BPICK}"

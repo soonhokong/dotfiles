@@ -1,7 +1,7 @@
-# ls => exa
-alias ls='exa'
-alias l='exa -alh --group-directories-first'
-alias ll='exa -lh --group-directories-first'
+# ls => eza
+alias ls='eza'
+alias l='eza -alh --group-directories-first'
+alias ll='eza -lh --group-directories-first'
 
 # emacs
 alias e='emacsclient -c -t'
