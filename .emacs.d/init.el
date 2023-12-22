@@ -23,12 +23,12 @@
 (setq vc-handled-backends nil)
 
 ;; use-package
-(unless (package-installed-p 'use-package)
-  (when (not package-archive-contents)
-    (package-refresh-contents))
-  (package-install 'use-package)
-  (package-install 'diminish)
-  (package-install 'bind-key))
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(dolist (item '(use-package diminish bind-key))
+  (unless (package-installed-p item)
+    (package-install item)))
 (setq use-package-always-ensure t)
 (setq use-package-verbose t)
 
