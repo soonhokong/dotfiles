@@ -8,4 +8,4 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 export POETRY_HOME="$HOME/.poetry"
 export PATH="$PATH:$POETRY_HOME/bin"
 
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then . "$HOME/.cargo/env"; fi
